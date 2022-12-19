@@ -1,5 +1,8 @@
 #ifndef _WASTE_H_
 #define _WASTE_H_
+#include <string>
+
+using namespace std;
 
 class Waste
 {	
@@ -32,32 +35,32 @@ class Paper: public Waste
 {
 	public:
 		
-		Waste ();
+		Paper();
 		
-}
+};
 
 
 class Glass: public Waste
 {
 	public:
 		
-		Waste ();
-}
+		Glass();
+};
 
 
 class Plastic: public Waste
 {
 	public:
 		
-		Waste ();
-}
+		Plastic();
+};
 
 
 class Organic: public Waste
 {
 	public:
 		
-		Waste ();
+		Organic();
 };
 
-#endif _WASTE_H_
+ #endif _WASTE_H_

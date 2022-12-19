@@ -1,6 +1,8 @@
 #ifndef _ACCOUNT_H
 #define _ACCOUNT_H
+#include <string>
 
+using namespace std;
 
 class Account{
 protected:
@@ -22,6 +24,7 @@ public:
     ~User();
 
     void set_wallet(int wallet);
+    
 };
 
 class Admin: public Account{

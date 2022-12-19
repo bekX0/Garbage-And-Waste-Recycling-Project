@@ -1,7 +1,7 @@
 #ifndef _WELDINGMACHINE_H_
 #define _WELDINGMACHINE_H_
-// #include <Account.h>
-// #include <Waste.h>
+#include <Account.h>
+#include <Waste.h>
 
 class WeldingMachine{
     private:
