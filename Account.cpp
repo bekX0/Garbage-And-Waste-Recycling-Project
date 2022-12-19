@@ -21,54 +21,34 @@ Admin::Admin() {
     password = ' ';
 }
 
-// User setters
-void User::set_name(string name){
+// login and setters
+int Account::login_account(string name, string password) {
+    if(this->name == name && this->password == password){
+        return 1;
+    }
+    else if(this->name == name && this->password != password){
+        return -1;
+    }
+    else if(this->name != name && this->password == password){
+        return -2;
+    }
+    else{
+        return 0;
+    }
+}
+
+void Account::set_name(string name){
     this->name = name;
 }
 
-void User::set_password(string password){
+void Account::set_password(string password){
     this->password = password;
 }
 
+// wallet sadece usera ozel 
 void User::set_wallet(int wallet) {
     this->wallet = wallet;
 }
 
-int User::login_account(string name, string password) {
-    if(this->name == name && this->password == password){
-        return 1;
-    }
-    else if(this->name == name && this->password != password){
-        return -1;
-    }
-    else if(this->name != name && this->password == password){
-        return -2;
-    }
-    else{
-        return 0;
-    }
-}
 
-// Admin setters
-void Admin::set_name(string name) {
-    this->name = name;
-}
 
-void Admin::set_password(string password) {
-    this->password = password;
-}
-
-int Admin::login_account(string name, string password) {
-    if(this->name == name && this->password == password){
-        return 1;
-    }
-    else if(this->name == name && this->password != password){
-        return -1;
-    }
-    else if(this->name != name && this->password == password){
-        return -2;
-    }
-    else{
-        return 0;
-    }
-}
