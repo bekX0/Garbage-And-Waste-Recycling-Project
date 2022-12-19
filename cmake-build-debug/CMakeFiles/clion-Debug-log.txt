@@ -1,0 +1,1 @@
+CMakeLists.txt not found in E:\University\University 2-1\CENG 241\project\Garbage-And-Waste-Recycling-Project Select CMakeLists.txt

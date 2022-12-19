@@ -1,0 +1,3 @@
+E:/University/University 2-1/CENG 241/project/Garbage-And-Waste-Recycling-Project/cmake-build-debug/CMakeFiles/Garbage_And_Waste_Recycling_Project.dir
+E:/University/University 2-1/CENG 241/project/Garbage-And-Waste-Recycling-Project/cmake-build-debug/CMakeFiles/edit_cache.dir
+E:/University/University 2-1/CENG 241/project/Garbage-And-Waste-Recycling-Project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
