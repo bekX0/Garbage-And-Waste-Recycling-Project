@@ -1,9 +1,9 @@
-#ifndef _WELDINGMACHINE_H_
-#define _WELDINGMACHINE_H_
+#ifndef _VENDINGMACHINE_H_
+#define _VENDINGMACHINE_H_
 #include <Account.h>
 #include <Waste.h>
 
-class WeldingMachine{
+class VendingMachine{
     private:
 
     protected:
@@ -13,19 +13,19 @@ class WeldingMachine{
         //? pointer user olsa parraları burdan versek (inputWaste()) 
     public:
         // Constructors
-        WeldingMachine(); // No-args Const.
-        WeldingMachine(float money, float storage_limit); // Two args Const.
-        WeldingMachine(WeldingMachine &WM); // Copy Const.
+        VendingMachine(); // No-args Const.
+        VendingMachine(float m, float sl); // Two args Const.
+        VendingMachine(VendingMachine &WM); // Copy Const.
 
         // Getters -- Setters
         float getMoney();
-        void setMoney();
+        void setMoney(float m);
 
         float getStorageInfo();
-        void setStorageValue();
+        void setStorageValue(float sv);
 
         float getLimit();
-        void setLimit();
+        void setLimit(float l);
 
         //Methods
         void status(); // Prints status of welding machine (eg. Current Money: X $    Storage: YY kg/amount)
