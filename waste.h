@@ -63,4 +63,4 @@ class Organic: public Waste
 		Organic();
 };
 
- #endif _WASTE_H_
+ #endif //_WASTE_H_
