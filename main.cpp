@@ -1,14 +1,15 @@
 #include <iostream>
+#include <string>
+
 #include "Waste.h"
 #include "Account.h"
 #include "VendingMachine.h"
 
 using namespace std;
 
-int main ()
-{   
-    string choose,password,username;
-    int n=-2, 
+int main (){   
+    string choose,password,againPassword,username;
+    int n=-2;
 
     cout << "Register or Login" ;
     cin >> choose;
@@ -35,12 +36,12 @@ int main ()
         
         while(n != 1){
             cout << "Enter your name: ";
-            cin >> name; 
+            cin >> username; 
 
             cout << "Enter your password: ";
             cin >> password;
 
-            n=obje.login(name,password);  //! Obje yazilacak!!!
+            n=obje.login(username,password);  //! Obje yazilacak!!!
 
             if(n == 1){
                 cout << "Login successful." << endl;
@@ -57,14 +58,17 @@ int main ()
         }
     }
 
-    menu(user_obje);
+    menu(user_obje); //! Obje yazilacak!!!
 
 }
 
 void menu(User &user){
-    int selection;
-    cout << "===== Welcome" << user.get_name() << "=====" << endl;
-    cout << "Current Balance : " << user.get_wallet() << endl << endl;
+    VendingMachine MAC;
+    int selection, choice, amount;
+    float weight;
+
+    cout << "===== Welcome" << user.getName() << "=====" << endl; //! Obje yazilacak!!!
+    cout << "Current Balance : " << user.getWallet() << endl << endl; //! Obje yazilacak!!!
     cout << "[1] " << "Withdraw Money" << endl;
     cout << "[2] " << "Deposit Waste" << endl;
     cout << "[3] " << "Log Out" << endl;
@@ -76,6 +80,59 @@ void menu(User &user){
     case 1:
         //TODO withdraw money fonsksiyonu user için-
         break;
+    
+    case 2:
+        cout << "1-Organic | 2-Anorganic" << endl;
+        cin >> choice;
+        
+        if(choice == '2'){
+            cout << "1-Paper | 2-Plastic | 3-Glass ==> ";
+            cin >> choice;
+            
+            switch (choice)
+            {
+            case 1:
+                {
+                Paper waste;
+                cout << "Enter amount of paper: ";
+                cin >> amount;
+                waste.SetAmount(amount);
+                }
+                break;
+            case 2:
+                {
+                Plastic waste;
+                cout << "Enter amount of plastic: ";
+                cin >> amount;
+                waste.SetAmount(amount);
+                }
+                break;
+
+            case 3:
+                {
+                Glass waste;
+                cout << "Enter amount of glass: ";
+                cin >> amount;
+                waste.SetAmount(amount);
+                }
+                break;
+
+            default:
+                cout << "Invalid waste!!!" << endl;
+                break;
+            }
+        }
+        else{
+            Organic waste;
+            cout << "Enter weight of waste: ";
+            cin >> weight;
+            waste.SetWeight(weight);
+        }
+        
+        break;
+    
+    case 3:
+    //TODO Log out func
     
     default:
         break;

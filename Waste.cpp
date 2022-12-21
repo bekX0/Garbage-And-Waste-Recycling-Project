@@ -8,7 +8,7 @@ class Waste
 {	
 
 	protected:
-		double price;
+		float price;
 		string attributes;
         
 	public:
@@ -21,7 +21,7 @@ class Waste
 		
 		virtual ~Waste ();
 		
-		virtual	double GetPrice ()
+		virtual	float GetPrice ()
 		{
 			return (price);
 		};
@@ -31,7 +31,7 @@ class Waste
 			return (attributes);
 		};
 		
-		virtual	void SetPrice (double x)
+		virtual	void SetPrice (float x)
 		{
 			price = x;
 		};
@@ -41,29 +41,29 @@ class Waste
 			attributes = att;
 		};
 		
-		virtual void CalculatePrice (double w, string str)
+		virtual void CalculatePrice (float w, string str)
 		{
-			if (str == "default");
+			if (str == "default")
 			{
 				price = price * w * 1.0;
 			}
 			
-			if else (str == "whole")
+			else if (str == "whole")
 			{
 				price = price * w * 4.0;
 			}
 			
-			if else (str == "broken")
+			else if (str == "broken")
 			{
 				price = price * w * 2.0;
 			}
 			
-			if else (str == "fresh")
+			else if (str == "fresh")
 			{
 				price = price * w * 5.0;
 			}
 			
-			if else (str == "rotten")
+			else if (str == "rotten")
 			{
 				price = price * w * 2.0;
 			}
@@ -126,14 +126,14 @@ class Glass: public Waste
 };
 
 
-class Plastic: public Waste
+class Plastic : public Waste
 {
 	private:
 		int amount;
 		
 	public:
 		
-		Plastic();
+		Plastic()
 		{
 			amount = 0;
 		};
@@ -155,25 +155,25 @@ class Plastic: public Waste
 class Organic: public Waste
 {
 	private:
-		double weight;
+		float weight;
 		
 	public:
 		
-		Organic();
+		Organic()
 		{
 			weight = 0.0;
 		};
 		
 		~Organic ();
 		
-		double GetWeight ()
+		float GetWeight ()
 		{
 			return (weight);
 		};
 		
-		void SetWeight (double y)
+		void SetWeight (float y)
 		{
-			weight = z;
+			weight = y;
 		};
 };
 

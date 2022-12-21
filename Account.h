@@ -11,10 +11,10 @@ public:
     Account();
     ~Account();
 
-    void set_name(string name);
-    string get_name();
-    void set_password(string password);
-    int login_account(string name, string password);
+    void setName(string name);
+    string getName();
+    void setPassword(string password);
+    int loginAccount(string name, string password);
 };
 
 class User: public Account{
@@ -24,8 +24,8 @@ public:
     User();
     ~User();
 
-    void set_wallet(int wallet);
-    int get_wallet();
+    void setWallet(int wallet);
+    int getWallet();
     
 };
 

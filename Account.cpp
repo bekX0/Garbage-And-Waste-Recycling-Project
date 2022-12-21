@@ -22,7 +22,7 @@ Admin::Admin() {
 }
 
 // login and setters
-int Account::login_account(string name, string password) {
+int Account::loginAccount(string name, string password) {
     if(this->name == name && this->password == password){
         return 1;
     }
@@ -37,22 +37,22 @@ int Account::login_account(string name, string password) {
     }
 }
 
-void Account::set_name(string name){
+void Account::setName(string name){
     this->name = name;
 }
 
-string Account :: get_name() {return this->name;}
+string Account :: getName() {return this->name;}
 
-void Account::set_password(string password){
+void Account::setPassword(string password){
     this->password = password;
 }
 
 // wallet sadece usera ozel 
-void User::set_wallet(int wallet) {
+void User::setWallet(int wallet) {
     this->wallet = wallet;
 }
 
-int User :: get_wallet() {return this->wallet;}
+int User :: getWallet() {return this->wallet;}
 
 
 
