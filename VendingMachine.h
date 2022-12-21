@@ -32,6 +32,8 @@ class VendingMachine{
 
         int inputWaste(Waste &W); // Function inputs wastes and check || if storage has not enough space return -1 || if machine has not enough money to give return -2 || if there is no problems return 0 
 
+        int withdrawMoney(User &user); // Function checks if machine has enough money to withdraw returns 0 otherwise returns -1
+
 
 };
 
