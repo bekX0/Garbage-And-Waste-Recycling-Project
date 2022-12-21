@@ -12,6 +12,7 @@ public:
     ~Account();
 
     void set_name(string name);
+    string get_name();
     void set_password(string password);
     int login_account(string name, string password);
 };
@@ -24,6 +25,7 @@ public:
     ~User();
 
     void set_wallet(int wallet);
+    int get_wallet();
     
 };
 

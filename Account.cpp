@@ -41,6 +41,8 @@ void Account::set_name(string name){
     this->name = name;
 }
 
+string Account :: get_name() {return this->name;}
+
 void Account::set_password(string password){
     this->password = password;
 }
@@ -49,6 +51,8 @@ void Account::set_password(string password){
 void User::set_wallet(int wallet) {
     this->wallet = wallet;
 }
+
+int User :: get_wallet() {return this->wallet;}
 
 
 

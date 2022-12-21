@@ -30,5 +30,9 @@ void VendingMachine :: status(){
 }
 
 int inputWaste(Waste &W){
+    return 0; //! düzeltilecek
+} 
+
+int withdrawMoney(User &user){
     
 }
