@@ -6,6 +6,8 @@ VendingMachine :: VendingMachine() {}
 
 VendingMachine :: VendingMachine(float m, float sl) : money{money}, storage_limit{sl} {}
 
+VendingMachine :: ~VendingMachine() {}
+
 VendingMachine :: VendingMachine(VendingMachine &WM){
     this->money = WM.money;
     this->storage = WM.storage;
@@ -52,13 +54,12 @@ int OrganicVendingMachine :: inputWaste(Waste &W){
 
 //================= WITHDRAW MONEY 
 //? güncelleme önerisi: istediği kadar bakiye çekmek isterse? (negatif sayı çekmek isterse)
-//TODO para azaltılacak 
 int VendingMachine :: withdrawMoney(User &user){
     if(user.getWallet() > this->money){
         return -1;
     }
     else if(user.getWallet() < this->money){
-        
+        this->money - user.getWallet();
         return 0;
     }
 }

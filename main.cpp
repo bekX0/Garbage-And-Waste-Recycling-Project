@@ -8,7 +8,14 @@
 using namespace std;
 
 int main (){   
+    do{
+        logIn();
+    }while(true); // makine hiçbir zaman kapanmayacak
+}
+
+void logIn(){
     string choose,password,againPassword,username;
+    User obj;
     int n=-2;
 
     cout << "Register or Login" ;
@@ -41,7 +48,7 @@ int main (){
             cout << "Enter your password: ";
             cin >> password;
 
-            n=obje.login(username,password);  //! Obje yazilacak!!!
+            n=obj.loginAccount(username,password);  //! account sınıfında login yok ya giren kişi adminse
 
             if(n == 1){
                 cout << "Login successful." << endl;
@@ -58,7 +65,7 @@ int main (){
         }
     }
 
-    menu(user_obje); //! Obje yazilacak!!!
+    menu(obj);
 
 }
 
