@@ -14,6 +14,8 @@ int main (){
     do{
         logIn();
     }while(true); // makine hiçbir zaman kapanmayacak
+    
+    return 0;
 }
 
 void logIn(){

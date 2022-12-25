@@ -1,5 +1,11 @@
 #include <iostream>
+
+#include "Account.h"
 #include "VendingMachine.h"
+#include "Waste.h"
+
+using namespace std;
+
 
 // Constructors
 /* VENDING MACHINE */

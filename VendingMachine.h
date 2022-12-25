@@ -1,9 +1,11 @@
 #ifndef _VENDINGMACHINE_H_
 #define _VENDINGMACHINE_H_
-#include "Account.h"
-#include "Waste.h"
 
-class VendingMachine{
+class Waste;
+class User;
+
+
+class VendingMachine {
     private:
 
     protected:

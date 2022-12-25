@@ -1,5 +1,7 @@
 #include <string>
 #include <iostream>
+
+
 #include "Waste.h"
 
 using namespace std;
@@ -10,7 +12,7 @@ Waste ::	Waste ()
 			attributes = "default";
 		}
 		
- //Waste :: ~Waste () {}
+ Waste :: ~Waste () {}
 		
  float Waste :: GetPrice (){
 	return (price);
@@ -45,7 +47,7 @@ Paper :: Paper(){
 	attributes = "default";
 }
 		
-//Paper :: ~Paper (){}
+Paper :: ~Paper (){}
 		
 int Paper :: GetAmount (){
 	return (amount);
@@ -95,7 +97,7 @@ Glass :: Glass(){
 	attributes = "default";
 }
 		
-//Glass :: ~Glass (){}
+Glass :: ~Glass (){}
 	    
 int Glass::	GetAmount (){
 	return (amount);
@@ -142,7 +144,7 @@ Plastic :: Plastic(){
 	amount = 0;
 }
 		
-//Plastic :: ~Plastic (){}
+Plastic :: ~Plastic (){}
 		
 int Plastic :: GetAmount(){
 	return (amount);
@@ -170,7 +172,7 @@ Organic :: Organic(){
 	attributes = "default";
 }
 
-//Organic :: ~Organic () {}
+Organic :: ~Organic () {}
 
 void Organic:: CalculatePrice ()
 {
