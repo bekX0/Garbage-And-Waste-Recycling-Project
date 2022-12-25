@@ -11,11 +11,15 @@ class VendingMachine{
         int storage; // Represents the amount of materials in machine
         int storage_limit; // Represents the limit of materials that can be stored in machine
         //? pointer user olsa parraları burdan versek (inputWaste()) 
+        // Account *user;
     public:
         // Constructors
         VendingMachine(); // No-args Const.
         VendingMachine(float m, float sl); // Two args Const.
         VendingMachine(VendingMachine &WM); // Copy Const.
+
+        //Destructor
+        ~VendingMachine(){};
 
         // Getters -- Setters
         float getMoney();

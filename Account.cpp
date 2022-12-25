@@ -53,6 +53,3 @@ void User::setWallet(int wallet) {
 }
 
 int User :: getWallet() {return this->wallet;}
-
-
-
