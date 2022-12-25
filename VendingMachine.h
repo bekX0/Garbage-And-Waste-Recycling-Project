@@ -1,7 +1,7 @@
 #ifndef _VENDINGMACHINE_H_
 #define _VENDINGMACHINE_H_
-#include <Account.h>
-#include <Waste.h>
+#include "Account.h"
+#include "Waste.h"
 
 class VendingMachine{
     private:
@@ -19,7 +19,7 @@ class VendingMachine{
         VendingMachine(VendingMachine &WM); // Copy Const.
 
         //Destructor
-        ~VendingMachine(){};
+        ~VendingMachine();
 
         // Getters -- Setters
         float getMoney();
@@ -48,6 +48,7 @@ class OrganicVendingMachine : public VendingMachine{
     public:
         OrganicVendingMachine(); // No-args Const.
         OrganicVendingMachine(float m, float sl); // Two args Const.
+        ~OrganicVendingMachine();
         int inputWaste(Waste &W);
     //TODO devamı yazılacak
 };

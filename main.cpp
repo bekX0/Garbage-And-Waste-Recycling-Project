@@ -7,6 +7,9 @@
 
 using namespace std;
 
+void logIn();
+void menu(User &user);
+
 int main (){   
     do{
         logIn();
@@ -72,6 +75,7 @@ void logIn(){
 void menu(User &user){
     VendingMachine MAC;
     int selection, choice, amount;
+    string attrib;
     float weight;
 
     cout << "===== Welcome" << user.getName() << "=====" << endl; //! Obje yazilacak!!!
@@ -103,6 +107,9 @@ void menu(User &user){
                 Paper waste;
                 cout << "Enter amount of paper: ";
                 cin >> amount;
+                cout << "Choose the attributes of your waste: (Cardboard or Paper)";
+                cin >> attrib;
+                waste.SetAttributes(attrib);
                 waste.SetAmount(amount);
                 }
                 break;
@@ -120,6 +127,9 @@ void menu(User &user){
                 Glass waste;
                 cout << "Enter amount of glass: ";
                 cin >> amount;
+                cout << "Choose the attributes of your waste: (Broken or Whole)";
+                cin >> attrib;
+                waste.SetAttributes(attrib);
                 waste.SetAmount(amount);
                 }
                 break;
@@ -133,6 +143,9 @@ void menu(User &user){
             Organic waste;
             cout << "Enter weight of waste: ";
             cin >> weight;
+            cout << "Choose the attributes of your waste: (Fresh or Rotten)";
+            cin >> attrib;
+            waste.SetAttributes(attrib);
             waste.SetWeight(weight);
         }
         

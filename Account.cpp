@@ -10,16 +10,22 @@ Account::Account() {
     password = ' ';
 }
 
+Account::~Account(){}
+
 User::User() {
     name = ' ';
     password = ' ';
     wallet = 0;
 }
 
+User::~User() {}
+
 Admin::Admin() {
     name = ' ';
     password = ' ';
 }
+
+Admin::~Admin() {}
 
 // login and setters
 int Account::loginAccount(string name, string password) {
@@ -47,7 +53,7 @@ void Account::setPassword(string password){
     this->password = password;
 }
 
-// wallet sadece usera ozel 
+// wallet just for user  
 void User::setWallet(int wallet) {
     this->wallet = wallet;
 }

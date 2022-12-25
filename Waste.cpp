@@ -4,176 +4,211 @@
 
 using namespace std;
 
-class Waste
-{	
-
-	protected:
-		float price;
-		string attributes;
-        
-	public:
-
-		Waste ()
+Waste ::	Waste ()
 		{
 			price = 0;
 			attributes = "default";
-		};
+		}
 		
-		virtual ~Waste ();
+ //Waste :: ~Waste () {}
 		
-		virtual	float GetPrice ()
-		{
-			return (price);
-		};
+ float Waste :: GetPrice (){
+	return (price);
+}
 		
-		virtual	string GetAttributes ()
-		{
-			return (attributes);
-		};
+string Waste :: GetAttributes (){
+	return (attributes);
+}
 		
-		virtual	void SetPrice (float x)
-		{
-			price = x;
-		};
+void Waste :: SetPrice (float x){
+	price = x;
+}
 		
-		virtual	void SetAttributes (string att)
-		{
-			attributes = att;
-		};
+void Waste :: SetAttributes (string att){
+	attributes = att;
+}
 		
-		virtual void CalculatePrice (float w, string str)
-		{
-			if (str == "default")
-			{
-				price = price * w * 1.0;
-			}
-			
-			else if (str == "whole")
-			{
-				price = price * w * 4.0;
-			}
-			
-			else if (str == "broken")
-			{
-				price = price * w * 2.0;
-			}
-			
-			else if (str == "fresh")
-			{
-				price = price * w * 5.0;
-			}
-			
-			else if (str == "rotten")
-			{
-				price = price * w * 2.0;
-			}
-			
-		};
-		
-	
-};
+void Waste:: CalculatePrice (){
+	if (attributes == "default")
+	{
+		price = 1.0;
+	}
 
-class Paper: public Waste
+	}
+
+
+
+		
+Paper :: Paper(){
+	amount = 0;
+	price = 0;
+	attributes = "default";
+}
+		
+//Paper :: ~Paper (){}
+		
+int Paper :: GetAmount (){
+	return (amount);
+}
+		
+void Paper :: SetAmount (int z){
+	amount = z;
+}
+
+string Paper :: GetAttributes ()
 {
-	private:
-		int amount;
-	
-	public:
-		
-		Paper()
-		{
-			amount = 0;
-		};
-		
-		~Paper ();
-		
-		int GetAmount ()
-		{
-			return (amount);
-		};
-		
-		void SetAmount (int z)
-		{
-			amount = z;
-		};
-};
+	return (attributes);
+}
 
-
-class Glass: public Waste
+void Paper :: SetAttributes (string str)
 {
-	private:
-		int amount;
+	attributes = str;
+}
+
+void Paper:: CalculatePrice ()
+{
+		if (attributes == "default")
+	{
+		price = amount * 1.0;
+	}
+		else if (attributes == "Cardboard")
+	{
+		price = amount * 5.0;
+	}
+
+		else if (attributes == "Paper")
+	{
+		price = amount * 2;
+	}
+
+	else
+	{
+		price = amount * 1.0;
+	}
+}
+
+
 		
-	public:
+Glass :: Glass(){
+	amount = 0;
+	price = 0;
+	attributes = "default";
+}
 		
-		Glass()
-		{
-			amount = 0;
-		};
-		
-	    ~Glass ();
+//Glass :: ~Glass (){}
 	    
-	    int GetAmount ()
-		{
-			return (amount);
-		};
+int Glass::	GetAmount (){
+	return (amount);
+}
 		
-		void SetAmount (int z)
-		{
-			amount = z;
-		};
+void Glass:: SetAmount (int z){
+	amount = z;
+}
 
-};
-
-
-class Plastic : public Waste
+string Glass :: GetAttributes ()
 {
-	private:
-		int amount;
-		
-	public:
-		
-		Plastic()
-		{
-			amount = 0;
-		};
-		
-		~Plastic ();
-		
-		int GetAmount ()
-		{
-			return (amount);
-		};
-		
-		void SetAmount (int z)
-		{
-			amount = z;
-		};
-};
+	return (attributes);
+}
 
-
-class Organic: public Waste
+void Glass :: SetAttributes (string str)
 {
-	private:
-		float weight;
+	attributes = str;
+}
+
+void Glass:: CalculatePrice ()
+{
+		if (attributes == "default")
+	{
+		price = amount * 1.0;
+	}
+		else if (attributes == "Whole")
+	{
+		price = amount * 7.0;
+	}
+
+		else if (attributes == "Broken")
+	{
+		price = amount * 3.5;
+	}
+		else
+	{
+		price = amount * 1.0;
+	}
+}
+
+
 		
-	public:
+Plastic :: Plastic(){
+	amount = 0;
+}
 		
-		Organic()
-		{
-			weight = 0.0;
-		};
+//Plastic :: ~Plastic (){}
 		
-		~Organic ();
+int Plastic :: GetAmount(){
+	return (amount);
+}
 		
-		float GetWeight ()
-		{
-			return (weight);
-		};
-		
-		void SetWeight (float y)
-		{
-			weight = y;
-		};
-};
+void Plastic ::SetAmount (int z){
+	amount = z;
+}
+
+string Plastic :: GetAttributes ()
+{
+	return (attributes);
+}
+
+void Plastic :: SetAttributes (string str)
+{
+	attributes = str;
+}
+
+
+
+Organic :: Organic(){
+	weight = 0.0;
+	price = 0;
+	attributes = "default";
+}
+
+//Organic :: ~Organic () {}
+
+void Organic:: CalculatePrice ()
+{
+		if (attributes == "default")
+	{
+		price = weight * 1.0;
+	}
+		else if (attributes == "Fresh")
+	{
+		price = weight * 8.0;
+	}
+
+		else if (attributes == "Rotten")
+	{
+		price = weight * 4.5;
+	}
+		else
+	{
+		price = weight * 1.0;
+	}
+}
+
+float Organic :: GetWeight (){
+	return (weight);
+}
+
+void Organic :: SetWeight (float y){
+	weight = y;
+}
+
+string Organic :: GetAttributes ()
+{
+	return (attributes);
+}
+
+void Organic :: SetAttributes (string str)
+{
+	attributes = str;
+}
+
 
