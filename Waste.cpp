@@ -23,7 +23,7 @@ string Waste :: GetAttributes (){
 }
 		
 void Waste :: SetPrice (float x){
-	price = x;
+	price = x;  //TODO file yapilacak
 }
 		
 void Waste :: SetAttributes (string att){
@@ -213,4 +213,11 @@ void Organic :: SetAttributes (string str)
 	attributes = str;
 }
 
+//düzenleme -berkin
+
+void Waste :: SetAmount(int z) {this->amount=z;}
+void Plastic :: CalculatePrice() {}
+float Waste :: GetWeight() {return this->weight;}
+void Waste :: SetWeight(float y) {this->weight= y;}
+int Waste :: GetAmount() {return this->amount;}
 

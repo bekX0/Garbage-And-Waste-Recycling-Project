@@ -1,2 +1,3 @@
-#include "Waste.h"
-#include "Account.h"
+#include "Waste.cpp"
+#include "Account.cpp"
+#include "VendingMachine.cpp"

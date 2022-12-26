@@ -1,6 +1,8 @@
 #ifndef _WASTE_H_
 #define _WASTE_H_
 
+
+
 using namespace std;
 
 class Waste
@@ -9,6 +11,8 @@ class Waste
 	protected:
 		float price;
 		string attributes;
+		int amount;
+		float weight;
         
 	public:
 
@@ -34,7 +38,7 @@ class Waste
 class Paper: public Waste
 {
 	private:
-		int amount;
+		//int amount;
 	
 	public:
 		
@@ -52,7 +56,7 @@ class Paper: public Waste
 class Glass: public Waste
 {
 	private:
-		int amount;
+		//int amount;
 		
 	public:
 		
@@ -70,7 +74,7 @@ class Glass: public Waste
 class Plastic: public Waste
 {
 	private:
-		int amount;
+		//int amount;
 		
 	public:
 		

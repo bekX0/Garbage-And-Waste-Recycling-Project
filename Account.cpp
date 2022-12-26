@@ -1,5 +1,8 @@
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <iomanip>
+
 
 #include "Account.h"
 // #include "VendingMachine.h"
@@ -62,3 +65,27 @@ void User::setWallet(int wallet) {
 }
 
 int User :: getWallet() {return this->wallet;}
+
+string User :: getPassword() {return this->password;}
+
+void User :: saveInfo(User &user){
+    file.open("UserDatabase.txt",ios::out);
+
+    file << user.getName() << setw(10) << user.getPassword() << setw(10) << user.getWallet() << endl;
+
+    file.close();
+}
+
+void Admin :: getInfo(){
+    string myText;
+
+    file.open("UserDatabase.txt",ios::in);
+
+    file << "Username " << setw(10) << "Password " << setw(10) << "Budget " << endl;
+
+    while(getline (file, myText)){
+		cout << myText << endl;
+	}
+
+    file.close();
+}

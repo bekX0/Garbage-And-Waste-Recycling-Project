@@ -1,8 +1,11 @@
 #include <iostream>
 
-#include "Account.h"
+
 #include "VendingMachine.h"
-#include "Waste.h"
+// #include "Waste.h"
+// #include "Account.h"
+class Waste;
+class User;
 
 using namespace std;
 
@@ -11,7 +14,7 @@ using namespace std;
 /* VENDING MACHINE */
 VendingMachine :: VendingMachine() {}
 
-VendingMachine :: VendingMachine(float m, float sl) : money{m}, storage_limit{sl} {}
+VendingMachine :: VendingMachine(float m, int sl) : money{m}, storage_limit{sl} {}
 
 
 

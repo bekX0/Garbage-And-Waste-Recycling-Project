@@ -1,51 +1,62 @@
 #ifndef _ACCOUNT_H_
 #define _ACCOUNT_H_
 #include <string>
+#include <fstream>
 
 using namespace std;
 
-class Account{
+class Account
+{
 protected:
-    string name,password;
+    fstream file;
+    string name, password;
+
 public:
-// Constructor
+    // Constructor
     Account();
 
-// Destructor
+    // Destructor
     ~Account();
 
-// Getters -- Setters
+    // Getters -- Setters
     void setName(string name);
     string getName();
     void setPassword(string password);
 
-//Methods
+    // Methods
     int loginAccount(string name, string password);
 };
 
-class User: public Account{
+class User : public Account
+{
 private:
     int wallet;
+
 public:
-// Constructor
+    // Constructor
     User();
 
-// Destructor
+    // Destructor
     ~User();
 
-// Getters -- Setters
+    // Getters -- Setters
     void setWallet(int wallet);
     int getWallet();
-    
+    string getPassword();
+    void saveInfo(User &a);
 };
 
-class Admin: public Account{
+class Admin : public Account
+{
 public:
-// Constructor
+    // Constructor
     Admin();
 
-// Destructor
+    // Destructor
     ~Admin();
+
+    // Methods
+    void getInfo();
 };
 
 #endif //_ACCOUNT_H

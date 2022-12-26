@@ -1,8 +1,11 @@
 #ifndef _VENDINGMACHINE_H_
 #define _VENDINGMACHINE_H_
 
-class Waste;
-class User;
+#include "Account.h"
+#include "Waste.h"
+
+// class Waste;
+// class User;
 
 
 class VendingMachine {
@@ -17,7 +20,7 @@ class VendingMachine {
     public:
         // Constructors
         VendingMachine(); // No-args Const.
-        VendingMachine(float m, float sl); // Two args Const.
+        VendingMachine(float m, int sl); // Two args Const.
         VendingMachine(VendingMachine &WM); // Copy Const.
 
         //Destructor
