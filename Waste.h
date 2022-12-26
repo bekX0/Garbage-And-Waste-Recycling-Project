@@ -1,6 +1,7 @@
 #ifndef _WASTE_H_
 #define _WASTE_H_
-#include <string>
+
+
 
 using namespace std;
 
@@ -10,6 +11,8 @@ class Waste
 	protected:
 		float price;
 		string attributes;
+		int amount;
+		float weight;
         
 	public:
 
@@ -22,7 +25,7 @@ class Waste
 		virtual	void SetPrice (float x);
 		virtual	void SetAttributes (string att);
 		
-		virtual void CalculatePrice (float w, string str);
+		virtual void CalculatePrice ();
 
 		virtual int GetAmount ();
 		virtual void SetAmount (int z);
@@ -35,45 +38,54 @@ class Waste
 class Paper: public Waste
 {
 	private:
-		int amount;
+		//int amount;
 	
 	public:
 		
 		Paper();
 		~Paper ();
 		
+		void CalculatePrice ();
 		int GetAmount ();
 		void SetAmount (int z);
+		string GetAttributes ();
+		void SetAttributes (string str);
 };
 
 
 class Glass: public Waste
 {
 	private:
-		int amount;
+		//int amount;
 		
 	public:
 		
 		Glass();
 	    ~Glass ();
 	    
+		void CalculatePrice ();
 	    int GetAmount ();
 		void SetAmount (int z);
+		string GetAttributes ();
+		void SetAttributes (string str);
 };
 
 
 class Plastic: public Waste
 {
 	private:
-		int amount;
+		//int amount;
 		
 	public:
 		
 		Plastic();
 		~Plastic ();
 		
+		void CalculatePrice ();
 		int GetAmount ();
 		void SetAmount (int z);
+		string GetAttributes ();
+		void SetAttributes (string str);
 };
 
 
@@ -87,9 +99,11 @@ class Organic: public Waste
 		Organic();
 		~Organic ();
 		
+		void CalculatePrice ();
 		float GetWeight ();
 		void SetWeight (float y);
-		void Exchange (int b, string str);
+		string GetAttributes ();
+		void SetAttributes (string str);
 };
 
  #endif //_WASTE_H_

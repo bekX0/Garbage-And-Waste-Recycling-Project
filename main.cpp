@@ -1,16 +1,22 @@
 #include <iostream>
 #include <string>
-
-#include "Waste.h"
-#include "Account.h"
-#include "VendingMachine.h"
+#include <stdio.h>
+#include "Waste.cpp"
+#include "Account.cpp"
+#include "VendingMachine.cpp"
 
 using namespace std;
+
+void logIn();
+void menu(User &user);
+void adminMenu(Admin &admin);
 
 int main (){   
     do{
         logIn();
     }while(true); // makine hiçbir zaman kapanmayacak
+    
+    return 0;
 }
 
 void logIn(){
@@ -72,10 +78,11 @@ void logIn(){
 void menu(User &user){
     VendingMachine MAC;
     int selection, choice, amount;
+    string attrib;
     float weight;
 
-    cout << "===== Welcome" << user.getName() << "=====" << endl; //! Obje yazilacak!!!
-    cout << "Current Balance : " << user.getWallet() << endl << endl; //! Obje yazilacak!!!
+    cout << "===== Welcome" << user.getName() << "=====" << endl; 
+    cout << "Current Balance : " << user.getWallet() << endl << endl; 
     cout << "[1] " << "Withdraw Money" << endl;
     cout << "[2] " << "Deposit Waste" << endl;
     cout << "[3] " << "Log Out" << endl;
@@ -85,7 +92,14 @@ void menu(User &user){
     switch (selection)
     {
     case 1:
-        //TODO withdraw money fonsksiyonu user için-
+        if(MAC.withdrawMoney(user) == 0){
+            cout << "Succesfull!" << endl;
+            cout << "Don't forget your cash!!" << endl;
+        }
+        else{
+            cout << "Operation failed!" << endl;
+            cout << "Machine have not enough money to withdraw!" << endl;
+        }
         break;
     
     case 2:
@@ -103,7 +117,13 @@ void menu(User &user){
                 Paper waste;
                 cout << "Enter amount of paper: ";
                 cin >> amount;
+                cout << "Choose the attributes of your waste: (Cardboard or Paper) ";
+                cin >> attrib;
+                
+                waste.SetAttributes(attrib);
                 waste.SetAmount(amount);
+                
+                cout << "Completed Successfully" << endl;
                 }
                 break;
             case 2:
@@ -111,7 +131,10 @@ void menu(User &user){
                 Plastic waste;
                 cout << "Enter amount of plastic: ";
                 cin >> amount;
+                
                 waste.SetAmount(amount);
+                
+                cout << "Completed Successfully" << endl;
                 }
                 break;
 
@@ -120,7 +143,13 @@ void menu(User &user){
                 Glass waste;
                 cout << "Enter amount of glass: ";
                 cin >> amount;
+                cout << "Choose the attributes of your waste: (Broken or Whole) ";
+                cin >> attrib;
+                
+                waste.SetAttributes(attrib);
                 waste.SetAmount(amount);
+                
+                cout << "Completed Successfully" << endl;
                 }
                 break;
 
@@ -133,15 +162,55 @@ void menu(User &user){
             Organic waste;
             cout << "Enter weight of waste: ";
             cin >> weight;
+            cout << "Choose the attributes of your waste: (Fresh or Rotten) ";
+            cin >> attrib;
+            
+            waste.SetAttributes(attrib);
             waste.SetWeight(weight);
+
+            cout << "Completed Successfully" << endl;
         }
         
         break;
     
     case 3:
+    cout << "===== Goodbye" << user.getName() << "=====" << endl; 
+    user.saveInfo(user);
     //TODO Log out func
     
     default:
         break;
+    }
+}//cd "d:\Codes\C++\Garbage-And-Waste-Recycling-Project\" ; if ($?) { g++ main.cpp -o main } ; if ($?) { .\main }
+
+void adminMenu(Admin &admin, VendingMachine &MAC){
+    int selection;
+
+    cout << "===== Welcome" << admin.getName() << "=====" << endl; 
+    cout << "[1] " << "Get Info" << endl;
+    cout << "[2] " << "Set Price" << endl; 
+    cout << "[3] " << "Check Current Balance" << endl; 
+    cout << "[4] " << "Log Out" << endl;
+    cout << "[5] " << "Turn Off" << endl;
+    cout << "Enter Choice : ";
+    cin >> selection;
+
+    switch(selection){
+        case 1:
+            admin.getInfo();
+            break;
+
+        case 2:
+            
+            
+        case 3:
+            MAC.getMoney();
+            break;
+
+        case 4:
+            cout << "===== Goodbye" << admin.getName() << "=====" << endl; 
+            break;
+
+        case 5:
     }
 }

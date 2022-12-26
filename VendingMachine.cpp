@@ -1,18 +1,36 @@
 #include <iostream>
-#include <VendingMachine.h>
+
+
+#include "VendingMachine.h"
+// #include "Waste.h"
+// #include "Account.h"
+class Waste;
+class User;
+
+using namespace std;
+
 
 // Constructors
+/* VENDING MACHINE */
 VendingMachine :: VendingMachine() {}
 
-VendingMachine :: VendingMachine(float m, float sl) : money{money}, storage_limit{sl} {}
+VendingMachine :: VendingMachine(float m, int sl) : money{m}, storage_limit{sl} {}
 
-VendingMachine :: ~VendingMachine() {}
+
 
 VendingMachine :: VendingMachine(VendingMachine &WM){
     this->money = WM.money;
     this->storage = WM.storage;
     this->storage_limit = WM.storage_limit;
 }
+
+/* ORGANIC VENDING MACHINE*/
+OrganicVendingMachine :: OrganicVendingMachine() {}
+OrganicVendingMachine :: OrganicVendingMachine(float m, float sl) : storage_limit{sl} {this->money = m;}
+
+// Destructors
+VendingMachine :: ~VendingMachine() {}
+OrganicVendingMachine :: ~OrganicVendingMachine() {}
 
 // Getters -- Setters
 

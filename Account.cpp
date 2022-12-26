@@ -1,6 +1,12 @@
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <iomanip>
+
+
 #include "Account.h"
+// #include "VendingMachine.h"
+// #include "Waste.h"
 
 using namespace std;
 
@@ -10,16 +16,22 @@ Account::Account() {
     password = ' ';
 }
 
+Account::~Account(){}
+
 User::User() {
     name = ' ';
     password = ' ';
     wallet = 0;
 }
 
+User::~User() {}
+
 Admin::Admin() {
     name = ' ';
     password = ' ';
 }
+
+Admin::~Admin() {}
 
 // login and setters
 int Account::loginAccount(string name, string password) {
@@ -47,9 +59,33 @@ void Account::setPassword(string password){
     this->password = password;
 }
 
-// wallet sadece usera ozel 
+// wallet just for user  
 void User::setWallet(int wallet) {
     this->wallet = wallet;
 }
 
 int User :: getWallet() {return this->wallet;}
+
+string User :: getPassword() {return this->password;}
+
+void User :: saveInfo(User &user){
+    file.open("UserDatabase.txt",ios::out);
+
+    file << user.getName() << setw(10) << user.getPassword() << setw(10) << user.getWallet() << endl;
+
+    file.close();
+}
+
+void Admin :: getInfo(){
+    string myText;
+
+    file.open("UserDatabase.txt",ios::in);
+
+    file << "Username " << setw(10) << "Password " << setw(10) << "Budget " << endl;
+
+    while(getline (file, myText)){
+		cout << myText << endl;
+	}
+
+    file.close();
+}
