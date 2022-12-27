@@ -40,7 +40,7 @@ void VendingMachine :: setMoney(float m){this->money = m;}
 float VendingMachine :: getStorageInfo(){return this->money;}
 void VendingMachine :: setStorageValue(float sv){this->money = sv;}
 
-float VendingMachine :: getLimit(){return this->money;}
+int VendingMachine :: getLimit(){return this->storage_limit;}
 void VendingMachine :: setLimit(float l) {this->storage_limit=l;};
 
 //Methods

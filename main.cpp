@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <stdio.h>
+#include <vector>
 #include "Waste.cpp"
 #include "Account.cpp"
 #include "VendingMachine.cpp"
@@ -11,15 +11,27 @@ void logIn();
 void menu(User &user);
 void adminMenu(Admin &admin);
 
-int main (){   
-    do{
-        logIn();
-    }while(true); // makine hiçbir zaman kapanmayacak
+int main (){
+    Account *p = new Admin();
+    Admin *admin = new Admin; 
+    
+    //vector <VendingMachine> MAC;
+
+    cout << "System Setting Up" << endl;
+    cout << "Waiting for admin..." << endl;
+    
+    
+    
+    
+  
+    //do{
+      //  logIn(MAC);
+    //}while(true); // makine hicbir zaman kapanmayacak
     
     return 0;
 }
 
-void logIn(){
+void logIn(vector <VendingMachine>& vec){
     string choose,password,againPassword,username;
     User obj;
     int n=-2;
@@ -54,7 +66,7 @@ void logIn(){
             cout << "Enter your password: ";
             cin >> password;
 
-            n=obj.loginAccount(username,password);  //! account sınıfında login yok ya giren kişi adminse
+            n=obj.loginAccount(username,password);  
 
             if(n == 1){
                 cout << "Login successful." << endl;
@@ -75,16 +87,14 @@ void logIn(){
 
 }
 
-void menu(User &user){
-    VendingMachine MAC;
+void menu(User &user, vector <VendingMachine>& vect){
     int selection, choice, amount;
     string attrib;
     float weight;
 
     cout << "===== Welcome" << user.getName() << "=====" << endl; 
     cout << "Current Balance : " << user.getWallet() << endl << endl; 
-    cout << "[1] " << "Withdraw Money" << endl;
-    cout << "[2] " << "Deposit Waste" << endl;
+    cout << "[1] " << "City name: " << endl;
     cout << "[3] " << "Log Out" << endl;
     cout << "Enter Choice : ";
     cin >> selection;
@@ -92,21 +102,7 @@ void menu(User &user){
     switch (selection)
     {
     case 1:
-        if(MAC.withdrawMoney(user) == 0){
-            cout << "Succesfull!" << endl;
-            cout << "Don't forget your cash!!" << endl;
-        }
-        else{
-            cout << "Operation failed!" << endl;
-            cout << "Machine have not enough money to withdraw!" << endl;
-        }
-        break;
-    
-    case 2:
-        cout << "1-Organic | 2-Anorganic" << endl;
-        cin >> choice;
-        
-        if(choice == '2'){
+            if ()
             cout << "1-Paper | 2-Plastic | 3-Glass ==> ";
             cin >> choice;
             
@@ -184,12 +180,15 @@ void menu(User &user){
 }//cd "d:\Codes\C++\Garbage-And-Waste-Recycling-Project\" ; if ($?) { g++ main.cpp -o main } ; if ($?) { .\main }
 
 void adminMenu(Admin &admin, VendingMachine &MAC){
-    int selection;
+    int selection,money,accepted;
+    char choose;
+    double money;
+    string cityname;
 
     cout << "===== Welcome" << admin.getName() << "=====" << endl; 
     cout << "[1] " << "Get Info" << endl;
-    cout << "[2] " << "Set Price" << endl; 
-    cout << "[3] " << "Check Current Balance" << endl; 
+    cout << "[2] " << "Set Vending Machine" << endl; 
+    cout << "[3] " << "Check Current Balance" << endl;
     cout << "[4] " << "Log Out" << endl;
     cout << "[5] " << "Turn Off" << endl;
     cout << "Enter Choice : ";
@@ -201,10 +200,61 @@ void adminMenu(Admin &admin, VendingMachine &MAC){
             break;
 
         case 2:
-            
+                cout << "Welcome to Vengding Machine Setter!" << endl;
+                cout << "Accepted waste type: " << endl << "1-Organic | 2-Anorganic ==> ";
+                cin >> accepted;
+
+                try
+                {
+                    if (accepted != 1 && accepted !=2) throw 1;
+                    
+                    cout << "City Name: ";
+                    cin >> cityname;
+                        
+                    cout << "Deposit Money: ";
+                    cin >> money;
+
+                    if (accepted == 1)
+                    {
+                        cout << "Set the price of Organic waste: ";
+                        cin >> 
+                    }
+
+                    else
+                    {
+
+                    }
+
+                    MAC.setMoney(money);
+                    cout << "New Vending Machine Balance: " << MAC.getMoney() << endl;
+
+                }
+                catch (int &x)
+                {
+                    cout << "Just 1 or 2!";
+                }
+
+
+            break;
             
         case 3:
-            MAC.getMoney();
+            cout << "[1] " << "View Current Balance" << endl;
+            cout << "[2] " << "Deposit Money" << endl; 
+        
+            cout << "Enter Choice : ";
+            cin >> selection;
+            if(selection == 1){
+                cout << "Vending Machine Balance: " << MAC.getMoney() << endl;
+            }
+            else if(selection == 2){
+                cout << "How Much Change to Vending Machine Balance: ";
+                cin >> money;
+                
+                MAC.setMoney(money);
+
+                cout << "New Vending Machine Balance: " << MAC.getMoney() << endl;
+            }
+            
             break;
 
         case 4:
@@ -212,5 +262,6 @@ void adminMenu(Admin &admin, VendingMachine &MAC){
             break;
 
         case 5:
+            
     }
 }

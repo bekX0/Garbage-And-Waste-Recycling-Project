@@ -12,10 +12,11 @@ class VendingMachine {
     private:
 
     protected:
+        User *user;
         float money; // For current money stored in welding machine
         int storage; // Represents the amount of materials in machine
         int storage_limit; // Represents the limit of materials that can be stored in machine
-        //? pointer user olsa parraları burdan versek (inputWaste()) 
+        //? pointer user olsa paralari burdan versek (inputWaste()) 
         // Account *user;
     public:
         // Constructors
@@ -33,7 +34,7 @@ class VendingMachine {
         float getStorageInfo();
         void setStorageValue(float sv);
 
-        float getLimit();
+        int getLimit();
         void setLimit(float l);
 
         //Methods
@@ -55,7 +56,7 @@ class OrganicVendingMachine : public VendingMachine{
         OrganicVendingMachine(float m, float sl); // Two args Const.
         ~OrganicVendingMachine();
         int inputWaste(Waste &W);
-    //TODO devamı yazılacak
+    //TODO devami yazilacak
 };
 
 
