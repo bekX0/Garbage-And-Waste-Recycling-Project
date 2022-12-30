@@ -14,7 +14,7 @@ using namespace std;
 /* VENDING MACHINE */
 VendingMachine :: VendingMachine() {}
 
-VendingMachine :: VendingMachine(float m, int sl) : money{m}, storage_limit{sl} {}
+VendingMachine :: VendingMachine(float m, int sl, string cn) : money{m}, storage_limit{sl}, city{cn} {}
 
 
 
@@ -22,6 +22,7 @@ VendingMachine :: VendingMachine(VendingMachine &WM){
     this->money = WM.money;
     this->storage = WM.storage;
     this->storage_limit = WM.storage_limit;
+    this->city = WM.city;
 }
 
 /* ORGANIC VENDING MACHINE*/

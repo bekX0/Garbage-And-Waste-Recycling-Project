@@ -7,16 +7,19 @@
 
 using namespace std;
 
-void logIn();
+void logIn(vector <VendingMachine>& vec, vector <Paper>& pap, vector <Glass>& glas, vector <Plastic>& plas, vector <Organic>& org);
 void menu(User &user);
 void adminMenu(Admin &admin);
 
-<<<<<<< Updated upstream
 int main (){
     Account *p = new Admin();
     Admin *admin = new Admin; 
     
-    //vector <VendingMachine> MAC;
+    vector <VendingMachine> MAC;
+    vector <Paper> paper;
+    vector <Glass> glass;
+    vector <Plastic> plastic;
+    vector <Organic> organic;
 
     cout << "System Setting Up" << endl;
     cout << "Waiting for admin..." << endl;
@@ -32,30 +35,8 @@ int main (){
     return 0;
 }
 
-void logIn(vector <VendingMachine>& vec){
+void logIn(vector <VendingMachine>& vec, vector <Paper>& pap, vector <Glass>& glas, vector <Plastic>& plas, vector <Organic>& org){
     string choose,password,againPassword,username;
-=======
-int main()
-{
-    Account *p = new Admin();
-    Admin *admin = new Admin;
-
-    // vector <VendingMachine> MAC;
-
-    cout << "System Setting Up" << endl;
-    cout << "Waiting for admin..." << endl;
-
-    // do{
-    //     logIn(MAC);
-    // }while(true); // makine hicbir zaman kapanmayacak
-
-    return 0;
-}
-
-void logIn(vector<VendingMachine> &vec)
-{
-    string choose, password, againPassword, username;
->>>>>>> Stashed changes
     User obj;
     int n = -2;
 
@@ -94,11 +75,7 @@ void logIn(vector<VendingMachine> &vec)
             cout << "Enter your password: ";
             cin >> password;
 
-<<<<<<< Updated upstream
             n=obj.loginAccount(username,password);  
-=======
-            n = obj.loginAccount(username, password);
->>>>>>> Stashed changes
 
             if (n == 1)
             {
@@ -122,38 +99,30 @@ void logIn(vector<VendingMachine> &vec)
     menu(obj);
 }
 
-<<<<<<< Updated upstream
-void menu(User &user, vector <VendingMachine>& vect){
-=======
-void menu(User &user, vector<VendingMachine> &vect)
-{
->>>>>>> Stashed changes
-    int selection, choice, amount;
+void menu(User &user, vector <VendingMachine>& vec, vector <Paper>& pap, vector <Glass>& glas, vector <Plastic>& plas, vector <Organic>& org){
+    int selection, choice, amount, counter, machine;
     string attrib;
     float weight;
 
-<<<<<<< Updated upstream
     cout << "===== Welcome" << user.getName() << "=====" << endl; 
     cout << "Current Balance : " << user.getWallet() << endl << endl; 
-    cout << "[1] " << "City name: " << endl;
+    cout << "[1] " << "Exchange waste with money" << endl;
     cout << "[3] " << "Log Out" << endl;
-=======
-    cout << "===== Welcome" << user.getName() << "=====" << endl;
-    cout << "Current Balance : " << user.getWallet() << endl
-         << endl;
-    cout << "[1] "
-         << "City name: " << endl;
-    cout << "[3] "
-         << "Log Out" << endl;
->>>>>>> Stashed changes
     cout << "Enter Choice : ";
     cin >> selection;
 
     switch (selection)
     {
     case 1:
-<<<<<<< Updated upstream
-            if ()
+            for (counter=0;counter<vec.length();counter++)
+            {
+                cout << counter+1 << "- " << vec[counter].getcityname << endl;
+            };
+
+            cin >> machine;
+
+            if (machine )
+
             cout << "1-Paper | 2-Plastic | 3-Glass ==> ";
             cin >> choice;
             
@@ -204,52 +173,6 @@ void menu(User &user, vector<VendingMachine> &vect)
                 cout << "Invalid waste!!!" << endl;
                 break;
             }
-=======
-
-        cout << "1-Paper | 2-Plastic | 3-Glass ==> ";
-        cin >> choice;
-
-        switch (choice)
-        {
-        case 1:
-        {
-            Paper waste;
-            cout << "Enter amount of paper: ";
-            cin >> amount;
-            cout << "Choose the attributes of your waste: (Cardboard or Paper) ";
-            cin >> attrib;
-
-            waste.SetAttributes(attrib);
-            waste.SetAmount(amount);
-
-            cout << "Completed Successfully" << endl;
-        }
-        break;
-        case 2:
-        {
-            Plastic waste;
-            cout << "Enter amount of plastic: ";
-            cin >> amount;
-
-            waste.SetAmount(amount);
-
-            cout << "Completed Successfully" << endl;
-        }
-        break;
-
-        case 3:
-        {
-            Glass waste;
-            cout << "Enter amount of glass: ";
-            cin >> amount;
-            cout << "Choose the attributes of your waste: (Broken or Whole) ";
-            cin >> attrib;
-
-            waste.SetAttributes(attrib);
-            waste.SetAmount(amount);
-
-            cout << "Completed Successfully" << endl;
->>>>>>> Stashed changes
         }
         break;
 
@@ -285,38 +208,18 @@ void menu(User &user, vector<VendingMachine> &vect)
  }
 //}  cd "d:\Codes\C++\Garbage-And-Waste-Recycling-Project\" ; if ($?) { g++ main.cpp -o main } ; if ($?) { .\main }
 
-<<<<<<< Updated upstream
-void adminMenu(Admin &admin, VendingMachine &MAC){
+void adminMenu(Admin &admin, vector <VendingMachine>& MAC, vector <Paper>& pap, vector <Glass>& glas, vector <Plastic>& plas, vector <Organic>& org){
     int selection,money,accepted;
-=======
-void adminMenu(Admin &admin, VendingMachine &MAC)
-{
-    int selection, money, accepted;
->>>>>>> Stashed changes
     char choose;
     double money;
     string cityname;
 
-<<<<<<< Updated upstream
     cout << "===== Welcome" << admin.getName() << "=====" << endl; 
     cout << "[1] " << "Get Info" << endl;
-    cout << "[2] " << "Set Vending Machine" << endl; 
+    cout << "[2] " << "Set a Vending Machine" << endl; 
     cout << "[3] " << "Check Current Balance" << endl;
     cout << "[4] " << "Log Out" << endl;
     cout << "[5] " << "Turn Off" << endl;
-=======
-    cout << "===== Welcome" << admin.getName() << "=====" << endl;
-    cout << "[1] "
-         << "Get Info" << endl;
-    cout << "[2] "
-         << "Set Vending Machine" << endl;
-    cout << "[3] "
-         << "Check Current Balance" << endl;
-    cout << "[4] "
-         << "Log Out" << endl;
-    cout << "[5] "
-         << "Turn Off" << endl;
->>>>>>> Stashed changes
     cout << "Enter Choice : ";
     cin >> selection;
 
@@ -326,42 +229,22 @@ void adminMenu(Admin &admin, VendingMachine &MAC)
         admin.getInfo();
         break;
 
-<<<<<<< Updated upstream
         case 2:
                 cout << "Welcome to Vengding Machine Setter!" << endl;
                 cout << "Accepted waste type: " << endl << "1-Organic | 2-Anorganic ==> ";
                 cin >> accepted;
-
+                
                 try
                 {
-                    if (accepted != 1 && accepted !=2) throw 1;
-                    
-                    cout << "City Name: ";
-                    cin >> cityname;
-                        
-                    cout << "Deposit Money: ";
-                    cin >> money;
+                    if (accepted != 1 && accepted != 2) throw 0;
 
-                    if (accepted == 1)
-                    {
-                        cout << "Set the price of Organic waste: ";
-                        cin >> 
-                    }
-
-                    else
-                    {
-
-                    }
-
-                    MAC.setMoney(money);
-                    cout << "New Vending Machine Balance: " << MAC.getMoney() << endl;
-
+                    void VendingMachineMaker (MAC, accepted);
                 }
-                catch (int &x)
+                catch(int &ecp)
                 {
-                    cout << "Just 1 or 2!";
+                    cerr << "Just 1 or 2!" << endl;
                 }
-
+                
 
             break;
             
@@ -384,78 +267,80 @@ void adminMenu(Admin &admin, VendingMachine &MAC)
             }
             
             break;
-=======
-    case 2:
-        cout << "Welcome to Vengding Machine Setter!" << endl;
-        cout << "Accepted waste type: " << endl
-             << "1-Organic | 2-Anorganic ==> ";
-        cin >> accepted;
->>>>>>> Stashed changes
 
-        try
-        {
-            if (accepted != 1 && accepted != 2)
-                throw 1;
-
-            cout << "City Name: ";
-            cin >> cityname;
-
-            cout << "Deposit Money: ";
-            cin >> money;
-
-            if (accepted == 1)
-            {
-                cout << "Set the price of Organic waste: ";
-                cin >>
-            }
-
-            else
-            {
-            }
-
-            MAC.setMoney(money);
-            cout << "New Vending Machine Balance: " << MAC.getMoney() << endl;
-        }
-        catch (int &x)
-        {
-            cout << "Just 1 or 2!";
-        }
-
-        break;
-
-    case 3:
-        cout << "[1] "
-             << "View Current Balance" << endl;
-        cout << "[2] "
-             << "Deposit Money" << endl;
-
-<<<<<<< Updated upstream
         case 5:
             
-=======
-        cout << "Enter Choice : ";
-        cin >> selection;
-        if (selection == 1)
-        {
-            cout << "Vending Machine Balance: " << MAC.getMoney() << endl;
-        }
-        else if (selection == 2)
-        {
-            cout << "How Much Change to Vending Machine Balance: ";
-            cin >> money;
-
-            MAC.setMoney(money);
-
-            cout << "New Vending Machine Balance: " << MAC.getMoney() << endl;
-        }
-
-        break;
-
-    case 4:
-        cout << "===== Goodbye" << admin.getName() << "=====" << endl;
-        break;
-
-    case 5:
->>>>>>> Stashed changes
     }
+}
+
+void VendingMachineMaker (vector <VendingMachine>& mac, vector <Paper>& pap, vector <Glass>& glas, vector <Plastic>& plas, vector <Organic>& org, int wastetype)
+{
+    int price1,price2,price3,price4;
+    int storage,money;
+    string cityname;
+    
+    try
+                {
+                    if (accepted == 1) throw 1;
+                    if (wastetype == 2) throw a;
+
+                }
+                catch (int &x)
+                {
+                    cout << "City Name: ";
+                    cin >> cityname;
+                        
+                    cout << "Deposit Money: ";
+                    cin >> money;
+
+                    cout << "Input the storage limit: ";
+                    cin >> storage;
+
+                    VendingMachine New(money, storage, cityname);
+                    mac.push_back (New);
+
+                    cout << "Set the price of Organic waste: ";
+                    cin >> price1;
+
+                    Organic New1;
+                    New1.SetPrice (price1);
+
+                    org.push_back (New1);
+
+     
+                }
+                catch (char &x)
+                {
+                    cout << "City Name: ";
+                    cin >> cityname;
+                        
+                    cout << "Deposit Money: ";
+                    cin >> money;
+
+                    cout << "Input the storage limit: ";
+                    cin >> storage;                   
+
+                    VendingMachine New(money, storage, cityname);
+                    mac.push_back (New);
+                    
+                    cout << "Set the price for Paper: ";
+                    cout >> price2;
+                    cout << "Set the price for Plastic: ";
+                    cout >> price3;
+                    cout << "Set the price for Glass: ";
+                    cout >> price4;
+
+                    Paper New2;
+                    Plastic New3;
+                    Glass New4;
+
+                    New2.SetPrice (price2);
+                    New3.SetPrice (price3);
+                    New4.SetPrice (price4);
+
+                    pap.push_back (New2);
+                    plas.push_back (New3);
+                    glas.push_back (New4);
+                
+                }
 }

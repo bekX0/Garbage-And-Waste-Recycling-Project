@@ -16,12 +16,13 @@ class VendingMachine {
         float money; // For current money stored in welding machine
         int storage; // Represents the amount of materials in machine
         int storage_limit; // Represents the limit of materials that can be stored in machine
+        string city;
         //? pointer user olsa paralari burdan versek (inputWaste()) 
         // Account *user;
     public:
         // Constructors
         VendingMachine(); // No-args Const.
-        VendingMachine(float m, int sl); // Two args Const.
+        VendingMachine(float m, int sl, string cn); // Two args Const.
         VendingMachine(VendingMachine &WM); // Copy Const.
 
         //Destructor
