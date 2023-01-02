@@ -38,6 +38,9 @@ class VendingMachine {
         int getLimit();
         void setLimit(float l);
 
+        string getCity();
+        void setCity(string city);
+
         //Methods
         void status(); // Prints status of welding machine (eg. Current Money: X $    Storage: YY kg/amount)
 

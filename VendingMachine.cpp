@@ -44,6 +44,9 @@ void VendingMachine :: setStorageValue(float sv){this->money = sv;}
 int VendingMachine :: getLimit(){return this->storage_limit;}
 void VendingMachine :: setLimit(float l) {this->storage_limit=l;};
 
+string VendingMachine :: getCity(){return this->city;}
+void VendingMachine :: setCity(string city) {this->city = city;}
+
 //Methods
 void VendingMachine :: status(){
     cout << "Current Money in Machine: " << this->money << "$" << endl;
@@ -79,6 +82,7 @@ int VendingMachine :: withdrawMoney(User &user){
     }
     else if(user.getWallet() < this->money){
         this->money - user.getWallet();
+        user.setWallet(0);
         return 0;
     }
 }
