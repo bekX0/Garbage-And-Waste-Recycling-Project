@@ -10,10 +10,11 @@ class Waste
 
 	protected:
 		float price;
-		string attributes;
-		int amount;
 		float weight;
-        
+		int amount;
+		int value;
+        string attributes;
+
 	public:
 
 		Waste ();
@@ -25,7 +26,7 @@ class Waste
 		virtual	void SetPrice (float x);
 		virtual	void SetAttributes (string att);
 		
-		virtual void CalculatePrice ();
+		virtual void CalculateValue () = 0;
 
 		virtual int GetAmount ();
 		virtual void SetAmount (int z);
@@ -45,7 +46,7 @@ class Paper: public Waste
 		Paper();
 		~Paper ();
 		
-		void CalculatePrice ();
+		void CalculateValue ();
 		int GetAmount ();
 		void SetAmount (int z);
 		string GetAttributes ();
@@ -63,7 +64,7 @@ class Glass: public Waste
 		Glass();
 	    ~Glass ();
 	    
-		void CalculatePrice ();
+		void CalculateValue ();
 	    int GetAmount ();
 		void SetAmount (int z);
 		string GetAttributes ();
@@ -81,7 +82,7 @@ class Plastic: public Waste
 		Plastic();
 		~Plastic ();
 		
-		void CalculatePrice ();
+		void CalculateValue ();
 		int GetAmount ();
 		void SetAmount (int z);
 		string GetAttributes ();
@@ -99,7 +100,7 @@ class Organic: public Waste
 		Organic();
 		~Organic ();
 		
-		void CalculatePrice ();
+		void CalculateValue ();
 		float GetWeight ();
 		void SetWeight (float y);
 		string GetAttributes ();

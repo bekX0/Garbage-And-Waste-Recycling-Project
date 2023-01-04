@@ -10,6 +10,9 @@ Waste ::	Waste ()
 		{
 			price = 0;
 			attributes = "default";
+			weight = 0;
+			amount = 0;
+			value = 0;
 		}
 		
  Waste :: ~Waste () {}
@@ -30,10 +33,10 @@ void Waste :: SetAttributes (string att){
 	attributes = att;
 }
 		
-void Waste:: CalculatePrice (){
+void Waste:: CalculateValue () {
 	if (attributes == "default")
 	{
-		price = 1.0;
+		value = price * 1.0;
 	}
 
 	}
@@ -43,8 +46,10 @@ void Waste:: CalculatePrice (){
 		
 Paper :: Paper(){
 	amount = 0;
+	weight = 0;
 	price = 0;
 	attributes = "default";
+	value = 0;			
 }
 		
 Paper :: ~Paper (){}
@@ -67,25 +72,25 @@ void Paper :: SetAttributes (string str)
 	attributes = str;
 }
 
-void Paper:: CalculatePrice ()
+void Paper:: CalculateValue ()
 {
 		if (attributes == "default")
 	{
-		price = amount * 1.0;
+		value = price * amount * 1.0;
 	}
 		else if (attributes == "Cardboard")
 	{
-		price = amount * 5.0;
+		value = price * amount * 5.0;
 	}
 
 		else if (attributes == "Paper")
 	{
-		price = amount * 2;
+		value = price * amount * 2;
 	}
 
 	else
 	{
-		price = amount * 1.0;
+		value = price * amount * 1.0;
 	}
 }
 
@@ -93,8 +98,10 @@ void Paper:: CalculatePrice ()
 		
 Glass :: Glass(){
 	amount = 0;
+	weight = 0;
 	price = 0;
 	attributes = "default";
+	value = 0;
 }
 		
 Glass :: ~Glass (){}
@@ -117,24 +124,24 @@ void Glass :: SetAttributes (string str)
 	attributes = str;
 }
 
-void Glass:: CalculatePrice ()
+void Glass:: CalculateValue ()
 {
 		if (attributes == "default")
 	{
-		price = amount * 1.0;
+		value = price * amount * 1.0;
 	}
 		else if (attributes == "Whole")
 	{
-		price = amount * 7.0;
+		value = price * amount * 7.0;
 	}
 
 		else if (attributes == "Broken")
 	{
-		price = amount * 3.5;
+		value = price * amount * 3.5;
 	}
 		else
 	{
-		price = amount * 1.0;
+		value = price * amount * 1.0;
 	}
 }
 
@@ -142,6 +149,10 @@ void Glass:: CalculatePrice ()
 		
 Plastic :: Plastic(){
 	amount = 0;
+	weight = 0;
+	price = 0;
+	attributes = "default";
+	value = 0;
 }
 		
 Plastic :: ~Plastic (){}
@@ -170,28 +181,29 @@ Organic :: Organic(){
 	weight = 0.0;
 	price = 0;
 	attributes = "default";
+	value = 0;
 }
 
 Organic :: ~Organic () {}
 
-void Organic:: CalculatePrice ()
+void Organic:: CalculateValue ()
 {
 		if (attributes == "default")
 	{
-		price = weight * 1.0;
+		value = price * weight * 1.0;
 	}
 		else if (attributes == "Fresh")
 	{
-		price = weight * 8.0;
+		value = price * weight * 8.0;
 	}
 
 		else if (attributes == "Rotten")
 	{
-		price = weight * 4.5;
+		value = price * weight * 4.5;
 	}
 		else
 	{
-		price = weight * 1.0;
+		value = price * weight * 1.0;
 	}
 }
 
@@ -216,7 +228,7 @@ void Organic :: SetAttributes (string str)
 //düzenleme -berkin
 
 void Waste :: SetAmount(int z) {this->amount=z;}
-void Plastic :: CalculatePrice() {}
+void Plastic :: CalculateValue() {}
 float Waste :: GetWeight() {return this->weight;}
 void Waste :: SetWeight(float y) {this->weight= y;}
 int Waste :: GetAmount() {return this->amount;}

@@ -14,17 +14,17 @@ protected:
 public:
     // Constructor
     Account();
-
+    Account(const Account &acc);
     // Destructor
-    ~Account();
+    virtual ~Account();
 
     // Getters -- Setters
-    void setName(string name);
-    string getName();
-    void setPassword(string password);
+    virtual void setName(string name);
+    virtual string getName();
+    virtual void setPassword(string password);
 
     // Methods
-    int loginAccount(string name, string password);
+    virtual int loginAccount(string name, string password);
 };
 
 class User : public Account
@@ -34,29 +34,31 @@ private:
 
 public:
     // Constructor
-    User();
+    User(); // No-args Const.
+    User(string name, string password); // Two args Const.
 
     // Destructor
-    ~User();
+    virtual ~User();
+
 
     // Getters -- Setters
-    void setWallet(int wallet);
-    int getWallet();
-    string getPassword();
-    void saveInfo(User &a);
+    virtual void setWallet(int wallet);
+    virtual int getWallet();
+    virtual string getPassword();
+    virtual void saveInfo(User &a);
 };
 
 class Admin : public Account
 {
 public:
     // Constructor
-    Admin();
+     Admin();
 
     // Destructor
-    ~Admin();
+    virtual ~Admin();
 
     // Methods
-    void getInfo();
+    virtual void getInfo();
 };
 
 #endif //_ACCOUNT_H

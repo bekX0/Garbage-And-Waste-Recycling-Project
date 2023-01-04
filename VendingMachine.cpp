@@ -14,19 +14,21 @@ using namespace std;
 /* VENDING MACHINE */
 VendingMachine :: VendingMachine() {}
 
-VendingMachine :: VendingMachine(float m, int sl) : money{m}, storage_limit{sl} {}
+VendingMachine :: VendingMachine(float m, int sl, string cn) : money{m}, storage_limit{sl}, city{cn} {}
 
 
 
-VendingMachine :: VendingMachine(VendingMachine &WM){
+VendingMachine :: VendingMachine(const VendingMachine &WM){
     this->money = WM.money;
     this->storage = WM.storage;
     this->storage_limit = WM.storage_limit;
+    this->city = WM.city;
 }
 
 /* ORGANIC VENDING MACHINE*/
 OrganicVendingMachine :: OrganicVendingMachine() {}
 OrganicVendingMachine :: OrganicVendingMachine(float m, float sl) : storage_limit{sl} {this->money = m;}
+OrganicVendingMachine :: OrganicVendingMachine(float m, float sl, string city) : storage_limit{sl} {this->money = m; this->city =city;}
 
 // Destructors
 VendingMachine :: ~VendingMachine() {}
@@ -40,8 +42,11 @@ void VendingMachine :: setMoney(float m){this->money = m;}
 float VendingMachine :: getStorageInfo(){return this->money;}
 void VendingMachine :: setStorageValue(float sv){this->money = sv;}
 
-float VendingMachine :: getLimit(){return this->money;}
+int VendingMachine :: getLimit(){return this->storage_limit;}
 void VendingMachine :: setLimit(float l) {this->storage_limit=l;};
+
+string VendingMachine :: getCity(){return this->city;}
+void VendingMachine :: setCity(string city) {this->city = city;}
 
 //Methods
 void VendingMachine :: status(){
@@ -78,6 +83,7 @@ int VendingMachine :: withdrawMoney(User &user){
     }
     else if(user.getWallet() < this->money){
         this->money - user.getWallet();
+        user.setWallet(0);
         return 0;
     }
 }

@@ -15,6 +15,10 @@ Account::Account() {
     name = ' ';
     password = ' ';
 }
+Account :: Account(const Account &acc){
+    this->name = acc.name;
+    this->password = acc.password;
+}
 
 Account::~Account(){}
 
@@ -23,6 +27,8 @@ User::User() {
     password = ' ';
     wallet = 0;
 }
+
+User :: User(string name, string password) {this->name = name; this->password =password;} 
 
 User::~User() {}
 
