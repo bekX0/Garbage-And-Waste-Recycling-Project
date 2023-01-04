@@ -18,7 +18,7 @@ VendingMachine :: VendingMachine(float m, int sl, string cn) : money{m}, storage
 
 
 
-VendingMachine :: VendingMachine(VendingMachine &WM){
+VendingMachine :: VendingMachine(const VendingMachine &WM){
     this->money = WM.money;
     this->storage = WM.storage;
     this->storage_limit = WM.storage_limit;
@@ -28,6 +28,7 @@ VendingMachine :: VendingMachine(VendingMachine &WM){
 /* ORGANIC VENDING MACHINE*/
 OrganicVendingMachine :: OrganicVendingMachine() {}
 OrganicVendingMachine :: OrganicVendingMachine(float m, float sl) : storage_limit{sl} {this->money = m;}
+OrganicVendingMachine :: OrganicVendingMachine(float m, float sl, string city) : storage_limit{sl} {this->money = m; this->city =city;}
 
 // Destructors
 VendingMachine :: ~VendingMachine() {}

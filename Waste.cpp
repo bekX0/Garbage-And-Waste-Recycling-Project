@@ -33,7 +33,7 @@ void Waste :: SetAttributes (string att){
 	attributes = att;
 }
 		
-void Waste:: CalculateValue (){
+void Waste:: CalculateValue () {
 	if (attributes == "default")
 	{
 		value = price * 1.0;

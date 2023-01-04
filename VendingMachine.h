@@ -3,6 +3,7 @@
 
 #include "Account.h"
 #include "Waste.h"
+#include "Waste.h"
 
 // class Waste;
 // class User;
@@ -12,18 +13,27 @@ class VendingMachine {
     private:
 
     protected:
-        User *user;
+        //User *user;
         float money; // For current money stored in welding machine
         int storage; // Represents the amount of materials in machine
         int storage_limit; // Represents the limit of materials that can be stored in machine
         string city;
         //? pointer user olsa paralari burdan versek (inputWaste()) 
         // Account *user;
+
+        
+
     public:
+
+        Paper Paper;
+        Glass Glass;
+        Plastic Plastic;
+        Organic Organic;
+
         // Constructors
         VendingMachine(); // No-args Const.
         VendingMachine(float m, int sl, string cn); // Two args Const.
-        VendingMachine(VendingMachine &WM); // Copy Const.
+        VendingMachine(const VendingMachine &WM); // Copy Const.
 
         //Destructor
         ~VendingMachine();
@@ -58,9 +68,11 @@ class OrganicVendingMachine : public VendingMachine{
     public:
         OrganicVendingMachine(); // No-args Const.
         OrganicVendingMachine(float m, float sl); // Two args Const.
+        OrganicVendingMachine(float m, float sl, string city);
         ~OrganicVendingMachine();
         int inputWaste(Waste &W);
     //TODO devami yazilacak
+
 };
 
 

@@ -14,7 +14,7 @@ protected:
 public:
     // Constructor
     Account();
-
+    Account(const Account &acc);
     // Destructor
     virtual ~Account();
 
@@ -34,10 +34,12 @@ private:
 
 public:
     // Constructor
-    User();
+    User(); // No-args Const.
+    User(string name, string password); // Two args Const.
 
     // Destructor
     virtual ~User();
+
 
     // Getters -- Setters
     virtual void setWallet(int wallet);

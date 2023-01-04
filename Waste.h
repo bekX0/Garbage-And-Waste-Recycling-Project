@@ -26,7 +26,7 @@ class Waste
 		virtual	void SetPrice (float x);
 		virtual	void SetAttributes (string att);
 		
-		virtual void CalculateValue ();
+		virtual void CalculateValue () = 0;
 
 		virtual int GetAmount ();
 		virtual void SetAmount (int z);
