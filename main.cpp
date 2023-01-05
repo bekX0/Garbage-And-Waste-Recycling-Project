@@ -8,8 +8,8 @@
 using namespace std;
 
 int logIn(vector<User> &users);
-void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> &vec,  int* current_machine, int* type);
-int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &vc, vector<VendingMachine> &MAC, int* current_machine, int* type);
+void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> &vec,  int* current_machine, int type);
+int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &vc, vector<VendingMachine> &MAC, int* current_machine, int* current_Omachine);
 void citiesOfMachines(vector<OrganicVendingMachine> &vc, vector<VendingMachine> &macs);
 void VendingMachineMaker(vector<OrganicVendingMachine> &vc, vector<VendingMachine> &mac, int wastetype);
 //TODO login try cath 
@@ -17,9 +17,7 @@ void VendingMachineMaker(vector<OrganicVendingMachine> &vc, vector<VendingMachin
 //TODO debug
 int main()
 {
-    int type;
-    string city;
-    int currentMAC {-1}, currentUser{0};
+    int currentMAC {-1}, currentOMAC{-1}, currentUser{0};
 
     Admin A("admin", "root");
     vector <User> users;
@@ -27,7 +25,7 @@ int main()
     vector<VendingMachine> MAC;
     vector<OrganicVendingMachine> OMAC;
     
-    adminMenu(users, A, OMAC, MAC, &currentMAC, &currentUser);
+    adminMenu(users, A, OMAC, MAC, &currentMAC, &currentOMAC);
 
     return 0;
 }
@@ -63,7 +61,8 @@ int logIn(vector<User> &users)
                 cout << "Passwords don't match!!!" << endl;
             }
         }
-        users.push_back(User(username,password));
+        User user(username,password);
+        users.push_back(user);
     }
     else if (choose == "Login")
     {
@@ -115,7 +114,7 @@ int logIn(vector<User> &users)
     }
 }
 
-void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> &vec,  int* current_machine, int* type)
+void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> &vec,  int* current_machine, int type)
 {
     int selection, choice, amount, counter;
     string attrib;
@@ -135,7 +134,7 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
         case 1:
         {
         
-            if (*type == 2)
+            if (type == 2)
             {
                 cout << "1-Paper | 2-Plastic | 3-Glass ==> ";
                 cin >> choice;
@@ -281,10 +280,11 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
 //TODO Log out func
 
 
-int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &vc, vector<VendingMachine> &MAC, int* current_machine, int* type)
+int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &vc, vector<VendingMachine> &MAC, int* current_machine, int* current_Omachine)
 {
     
     int selection,accepted, logged;
+    int type, temp;
     char choose;
     float money;
     string cityname, name, pass;
@@ -346,6 +346,7 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
     
             cout << "Enter Choice : ";
             cin >> selection;
+
             if (selection == 1)
             {
                 cout << "Vending Machine Balance: " << MAC.at(*current_machine).getMoney() << endl;
@@ -359,13 +360,33 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
     
                 cout << "New Vending Machine Balance: " << MAC.at(*current_machine).getMoney() << endl;
             }
+
     
             break;
         
     
         case 4:
             citiesOfMachines(vc, MAC);
-            cin >> *current_machine;
+
+            cout << endl << "Select number of city: ";
+            cin >> temp;
+
+            if (temp > MAC.size())
+            {
+                *current_Omachine = -1;
+                type = 1;
+                *current_Omachine = temp;
+                *current_Omachine = *current_Omachine - MAC.size()-1;
+            }
+
+            else
+            {
+                *current_machine = -1;
+                type = 2;
+                *current_machine = temp;
+                *current_machine = *current_machine -1;
+            }
+
             break;
     
         case 5:
@@ -375,7 +396,12 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
                     break;
                 }
                 else{
+                    if (type == 2)
                     menu((users.at(logged)), vc, MAC, current_machine, type);
+
+                    else
+                    menu((users.at(logged)), vc, MAC, current_Omachine, type);
+
                     break;
                 }
             }
@@ -391,7 +417,7 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
 
 void VendingMachineMaker(vector<OrganicVendingMachine> &vc, vector<VendingMachine> &mac, int wastetype)
 {
-    int price1, price2, price3, price4;
+    float price1, price2, price3, price4;
     float storage, money;
     string cityname,a;
     
@@ -445,7 +471,7 @@ void VendingMachineMaker(vector<OrganicVendingMachine> &vc, vector<VendingMachin
 }
 
 void citiesOfMachines(vector<OrganicVendingMachine> &vc, vector<VendingMachine> &macs){
-
+    int i{0};
     cout << "Anorganic Machines:" << endl;
 
     for(int i{0} ; i< macs.size() ; i++){
@@ -454,7 +480,7 @@ void citiesOfMachines(vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
 
     cout << "Organic Machines:" << endl;
 
-    for( int i{0}  ; i< vc.size() ; i++){
+    for(; i< vc.size()+macs.size() ; i++){
         cout << "[" <<  i+1 << "] " << vc.at(i).getCity() << endl;
     }
 }
