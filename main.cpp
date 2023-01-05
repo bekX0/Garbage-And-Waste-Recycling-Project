@@ -63,6 +63,7 @@ int logIn(vector<User> &users)
         }
         User user(username,password);
         users.push_back(user);
+        return 0;
     }
     else if (choose == "Login")
     {
@@ -402,9 +403,10 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
                     else
                     menu((users.at(logged)), vc, MAC, current_Omachine, type);
 
-                    break;
+                    
                 }
             }
+            break;
         case 6:
             return 0;
             break;
@@ -474,13 +476,13 @@ void citiesOfMachines(vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
     int i{0};
     cout << "Anorganic Machines:" << endl;
 
-    for(int i{0} ; i< macs.size() ; i++){
+    for(; i< macs.size() ; i++){
         cout << "[" <<  i+1 << "] " << macs.at(i).getCity() << endl;
     }
 
     cout << "Organic Machines:" << endl;
 
     for(; i< vc.size()+macs.size() ; i++){
-        cout << "[" <<  i+1 << "] " << vc.at(i).getCity() << endl;
+        cout << "[" <<  i+1 << "] " << vc.at(i-macs.size()).getCity() << endl;
     }
 }
