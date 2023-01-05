@@ -32,7 +32,7 @@ class Waste
 		virtual void SetAmount (int z);
 		virtual float GetWeight ();
 		virtual void SetWeight (float y);
-		
+		virtual float GetValue ();		
 	
 };
 
@@ -49,8 +49,10 @@ class Paper: public Waste
 		void CalculateValue ();
 		int GetAmount ();
 		void SetAmount (int z);
+		float GetValue ();
 		string GetAttributes ();
 		void SetAttributes (string str);
+		
 };
 
 
@@ -69,6 +71,7 @@ class Glass: public Waste
 		void SetAmount (int z);
 		string GetAttributes ();
 		void SetAttributes (string str);
+		float GetValue ();
 };
 
 
@@ -87,6 +90,7 @@ class Plastic: public Waste
 		void SetAmount (int z);
 		string GetAttributes ();
 		void SetAttributes (string str);
+		float GetValue ();
 };
 
 
@@ -105,6 +109,7 @@ class Organic: public Waste
 		void SetWeight (float y);
 		string GetAttributes ();
 		void SetAttributes (string str);
+		float GetValue ();
 };
 
  #endif //_WASTE_H_

@@ -24,6 +24,11 @@ Waste ::	Waste ()
 string Waste :: GetAttributes (){
 	return (attributes);
 }
+
+float Waste :: GetValue ()
+{
+	return (value);
+}
 		
 void Waste :: SetPrice (float x){
 	price = x;  //TODO file yapilacak
@@ -70,6 +75,11 @@ string Paper :: GetAttributes ()
 void Paper :: SetAttributes (string str)
 {
 	attributes = str;
+}
+
+float Paper :: GetValue ()
+{
+	return (value);
 }
 
 void Paper:: CalculateValue ()
@@ -124,6 +134,11 @@ void Glass :: SetAttributes (string str)
 	attributes = str;
 }
 
+float Glass :: GetValue ()
+{
+	return (value);
+}
+
 void Glass:: CalculateValue ()
 {
 		if (attributes == "default")
@@ -165,6 +180,11 @@ void Plastic ::SetAmount (int z){
 	amount = z;
 }
 
+void Plastic :: CalculateValue() 
+{ 
+	value = amount*price*1.0; 
+}
+
 string Plastic :: GetAttributes ()
 {
 	return (attributes);
@@ -173,6 +193,11 @@ string Plastic :: GetAttributes ()
 void Plastic :: SetAttributes (string str)
 {
 	attributes = str;
+}
+
+float Plastic :: GetValue ()
+{
+	return (value);
 }
 
 
@@ -225,10 +250,14 @@ void Organic :: SetAttributes (string str)
 	attributes = str;
 }
 
+float Organic :: GetValue ()
+{
+	return (value);
+}
+
 //düzenleme -berkin
 
 void Waste :: SetAmount(int z) {this->amount=z;}
-void Plastic :: CalculateValue() {}
 float Waste :: GetWeight() {return this->weight;}
 void Waste :: SetWeight(float y) {this->weight= y;}
 int Waste :: GetAmount() {return this->amount;}

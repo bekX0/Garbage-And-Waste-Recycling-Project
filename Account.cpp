@@ -28,7 +28,7 @@ User::User() {
     wallet = 0;
 }
 
-User :: User(string name, string password) {this->name = name; this->password =password;} 
+User::User(string name, string password) {this->name = name; this->password =password;} 
 
 User::~User() {}
 
@@ -36,6 +36,8 @@ Admin::Admin() {
     name = ' ';
     password = ' ';
 }
+
+Admin::Admin(string name, string password) {this->name = name; this->password =password;}
 
 Admin::~Admin() {}
 
@@ -65,9 +67,10 @@ void Account::setPassword(string password){
     this->password = password;
 }
 
+
 // wallet just for user  
 void User::setWallet(int wallet) {
-    this->wallet = wallet;
+    this->wallet += wallet;
 }
 
 int User :: getWallet() {return this->wallet;}
@@ -94,4 +97,13 @@ void Admin :: getInfo(){
 	}
 
     file.close();
+}
+
+int Admin::loginAdmin(string name, string password) {
+    if(this->name == name && this->password == password){
+        return 1;
+    }
+    else{
+        return 0;
+    }
 }
