@@ -22,6 +22,7 @@ public:
     virtual void setName(string name);
     virtual string getName();
     virtual void setPassword(string password);
+    
 
     // Methods
     virtual int loginAccount(string name, string password);
@@ -53,12 +54,14 @@ class Admin : public Account
 public:
     // Constructor
      Admin();
+     Admin(string username, string password);
 
     // Destructor
     virtual ~Admin();
 
     // Methods
     virtual void getInfo();
+    int loginAdmin(string name, string password);
 };
 
 #endif //_ACCOUNT_H

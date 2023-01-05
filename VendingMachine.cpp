@@ -57,6 +57,8 @@ void VendingMachine :: status(){
 //================ ANORGANIC MACHINE
 int VendingMachine :: inputWaste(Waste &W){
     if(this->storage + W.GetAmount() < this->storage_limit){
+        // this->storage += W.GetAmount();
+        // user.setWallet(user.getWallet() + W.GetPrice()*W.GetAmount());
         return 0;
     }
     else if(this->storage + W.GetAmount() > this->storage_limit){
