@@ -28,7 +28,7 @@ User::User() {
     wallet = 0;
 }
 
-User::User(string name, string password) {this->name = name; this->password =password;} 
+User::User(string name, string password) {this->name = name; this->password =password; this->wallet = 0;} 
 
 User::~User() {}
 
@@ -90,7 +90,7 @@ void Admin :: getInfo(){
 
     file.open("UserDatabase.txt",ios::in);
 
-    file << "Username " << setw(10) << "Password " << setw(10) << "Budget " << endl;
+    cout << "Username " << setw(10) << "Password " << setw(10) << "Budget " << endl;
 
     while(getline (file, myText)){
 		cout << myText << endl;

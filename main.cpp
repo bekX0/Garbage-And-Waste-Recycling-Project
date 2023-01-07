@@ -33,9 +33,9 @@ int main()
 int logIn(vector<User> &users)
 {
     string choose, password, againPassword, username;
-    int n = -2, index;
+    int n = -3, index ;
 
-    cout << "Register or Login";
+    cout << "Register or Login: ";
     cin >> choose;
 
     if (choose == "Register")
@@ -44,7 +44,7 @@ int logIn(vector<User> &users)
         cin >> username;
         
         while(true){
-            cout << "Enter a password";
+            cout << "Enter a password: ";
             cin >> password;
 
             cout << "Enter a password again: ";
@@ -61,9 +61,11 @@ int logIn(vector<User> &users)
                 cout << "Passwords don't match!!!" << endl;
             }
         }
+        
         User user(username,password);
         users.push_back(user);
-        return 0;
+
+        return -1;
     }
     else if (choose == "Login")
     {
@@ -82,13 +84,9 @@ int logIn(vector<User> &users)
             }
 
             for(int i{0}; i< 10 ; i++){
-                if(users[i].getName() == username){
-                    if(users[i].getPassword() == password){
-                        index = i;
-                    }
-                }
-                else{
-                    continue;
+                if(users[i].getName() == username && users[i].getPassword() == password){
+                    index = i;
+                    break;
                 }
             }
 
@@ -112,7 +110,9 @@ int logIn(vector<User> &users)
                 cout << "Invalid password and username try again !!!" << endl;
             }
         }
+        return 0;
     }
+
 }
 
 void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> &vec,  int* current_machine, int type)
@@ -122,14 +122,14 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
     float weight, money;
     Waste *Waste{nullptr};
 
-    cout << "===== Welcome " << user.getName() << " =====" << endl;
+    cout << "\n===== Welcome " << user.getName() << " =====\n" << endl;
     do
     {
     cout << "Current Balance : " << user.getWallet() << endl;
     cout << "[1] Input Waste" << endl;
     cout << "[2] Withdraw Money" << endl;
     cout << "[3] Log Out" << endl;
-    cout << "Enter Choice : ";
+    cout << "Enter Choice: ";
     cin >> selection;
 
     switch (selection)
@@ -161,10 +161,10 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
                             money = (*Waste).GetValue();
                         
                             user.setWallet(money);
-                            cout << "You succesfully added waste to machine. Your balance updated!";
+                            cout << "\nYou succesfully added waste to machine. Your balance updated!"<< endl;
                         }
                         else{
-                            cout << "Machine has not enough place to store waste!";
+                            cout << "\nMachine has not enough place to store waste!"<< endl;
                         }
                         
                    
@@ -189,10 +189,10 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
                             money = (*Waste).GetValue();
                         
                             user.setWallet(money);
-                            cout << "You succesfully added waste to machine. Your balance updated!";
+                            cout << "\nYou succesfully added waste to machine. Your balance updated!"<< endl;
                         }
                         else{
-                            cout << "Machine has not enough place to store waste!";
+                            cout << "\nMachine has not enough place to store waste!"<< endl;
                         }
                         
                         Waste=nullptr;
@@ -218,10 +218,10 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
                             money = (*Waste).GetValue();
                         
                             user.setWallet(money);
-                            cout << "You succesfully added waste to machine. Your balance updated!";
+                            cout << "\nYou succesfully added waste to machine. Your balance updated!"<< endl;
                         }
                         else{
-                            cout << "Machine has not enough place to store waste!";
+                            cout << "\nMachine has not enough place to store waste!"<< endl;
                         }
                         
                         Waste=nullptr;
@@ -235,7 +235,7 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
                 }
             }
             else{
-                Waste= new Organic(vec.at(*current_machine).Waste);
+                Waste= new Organic(vc.at(*current_machine).Organic);
                 cout << "Enter weight of waste: ";
                 cin >> weight;
                 cout << "Choose the attributes of your waste: (Fresh or Rotten) ";
@@ -252,10 +252,10 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
                         
                             user.setWallet(money);
                             
-                            cout << "You succesfully added waste to machine. Your balance updated!";
+                            cout << "\nYou succesfully added waste to machine. Your balance updated!";
                         }
                         else{
-                            cout << "Machine has not enough place to store waste!";
+                            cout << "\nMachine has not enough place to store waste!";
                         }
                 
                 Waste=nullptr;
@@ -269,22 +269,23 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
             if (type == 1)
             {
                 vc.at(*current_machine).withdrawMoney(user);
+                cout << "Don't forget your money!!" << endl;
             }
             else
             {
                 vec.at(*current_machine).withdrawMoney(user);
+                cout << "Don't forget your money!!" << endl;
             }
             break;
         }
 
         case 3:
-            cout << "===== Goodbye " << user.getName() << " =====" << endl;
+            cout << "===== Goodbye " << user.getName() << " =====\n" << endl;
             user.saveInfo(user);
-
-            break;
+            return;
     
     }
-    }
+    }while (true);
 
 }
 
@@ -315,7 +316,7 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
         }
 
 
-        cout << "===== Welcome " << admin.getName() << " =====" << endl;
+        cout << "\n===== Welcome " << admin.getName() << " =====\n" << endl;
         do{
         cout << "[1] Get Info" << endl;
         cout << "[2] Create a Vending Machine" << endl;
@@ -424,17 +425,22 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
         case 5:
             while(true){
                 logged = logIn(users);
+                cout << logged << endl;
                 if(logged == -2){
                     break;
                 }
+
+                else if (logged == -1)
+                {
+                    logged = logIn(users);
+                }
+
                 else{
                     if (type == 2)
                     menu((users.at(logged)), vc, MAC, current_machine, type);
 
                     else
                     menu((users.at(logged)), vc, MAC, current_Omachine, type);
-
-                    
                 }
             }
             break;

@@ -14,7 +14,7 @@ using namespace std;
 /* VENDING MACHINE */
 VendingMachine :: VendingMachine() {}
 
-VendingMachine :: VendingMachine(float m, int sl, string cn) : money{m}, storage_limit{sl}, city{cn} {}
+VendingMachine :: VendingMachine(float m, int sl, string cn) : money{m}, storage_limit{sl}, city{cn} {this->storage =0;}
 
 
 
@@ -26,9 +26,9 @@ VendingMachine :: VendingMachine(const VendingMachine &WM){
 }
 
 /* ORGANIC VENDING MACHINE*/
-OrganicVendingMachine :: OrganicVendingMachine() {}
-OrganicVendingMachine :: OrganicVendingMachine(float m, float sl) : storage_limit{sl} {this->money = m;}
-OrganicVendingMachine :: OrganicVendingMachine(float m, float sl, string city) : storage_limit{sl} {this->money = m; this->city =city;}
+OrganicVendingMachine :: OrganicVendingMachine() {this->storage =0;}
+OrganicVendingMachine :: OrganicVendingMachine(float m, float sl) : storage_limit{sl} {this->money = m; this->storage =0;}
+OrganicVendingMachine :: OrganicVendingMachine(float m, float sl, string city) : storage_limit{sl} {this->money = m; this->city =city; this->storage =0;}
 
 // Destructors
 VendingMachine :: ~VendingMachine() {}
@@ -37,13 +37,13 @@ OrganicVendingMachine :: ~OrganicVendingMachine() {}
 // Getters -- Setters
 
 float VendingMachine :: getMoney(){return this->money;}
-void VendingMachine :: setMoney(float m){this->money = m;}
+void VendingMachine :: setMoney(float m){this->money += m;}
 
-float VendingMachine :: getStorageInfo(){return this->money;}
-void VendingMachine :: setStorageValue(float sv){this->money = sv;}
+float VendingMachine :: getStorageInfo(){return this->storage;}
+void VendingMachine :: setStorageValue(float sv){this->storage += sv;}
 
 int VendingMachine :: getLimit(){return this->storage_limit;}
-void VendingMachine :: setLimit(float l) {this->storage_limit=l;};
+void VendingMachine :: setLimit(float l) {this->storage_limit = l;};
 
 string VendingMachine :: getCity(){return this->city;}
 void VendingMachine :: setCity(string city) {this->city = city;}
@@ -84,8 +84,8 @@ int VendingMachine :: withdrawMoney(User &user){
         return -1;
     }
     else if(user.getWallet() < this->money){
-        this->money - user.getWallet();
-        user.setWallet(0);
+        this->money -= user.getWallet();
+        user.setWallet(-(user.getWallet()));
         return 0;
     }
 }
