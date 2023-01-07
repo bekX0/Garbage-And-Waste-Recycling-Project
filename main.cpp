@@ -123,6 +123,8 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
     Waste *Waste{nullptr};
 
     cout << "===== Welcome " << user.getName() << " =====" << endl;
+    do
+    {
     cout << "Current Balance : " << user.getWallet() << endl;
     cout << "[1] Input Waste" << endl;
     cout << "[2] Withdraw Money" << endl;
@@ -154,7 +156,7 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
 
                         cout << "Completed Successfully" << endl;
                         
-                        if(vec.at(*current_machine).inputWaste(*Waste) == 1){
+                        if(vec.at(*current_machine).inputWaste(*Waste) == 0){
                             (*Waste).CalculateValue();
                             money = (*Waste).GetValue();
                         
@@ -173,7 +175,7 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
             
                     case 2:
                     {   
-                        Waste = new Plastic();
+                        Waste = new Plastic(vec.at(*current_machine).Plastic);
                         cout << "Enter amount of plastic: ";
                         cin >> amount;
 
@@ -182,7 +184,7 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
 
                         cout << "Completed Successfully" << endl;
                         
-                        if(vec.at(*current_machine).inputWaste(*Waste) == 1){
+                        if(vec.at(*current_machine).inputWaste(*Waste) == 0){
                             (*Waste).CalculateValue();
                             money = (*Waste).GetValue();
                         
@@ -200,7 +202,7 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
                 
                     case 3:
                     {
-                        Waste = new Glass ();
+                        Waste = new Glass (vec.at(*current_machine).Glass);
                         cout << "Enter amount of glass: ";
                         cin >> amount;
                         cout << "Choose the attributes of your waste: (Broken or Whole) ";
@@ -211,7 +213,7 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
 
                         cout << "Completed Successfully" << endl;
                         
-                        if(vec.at(*current_machine).inputWaste(*Waste) == 1){
+                        if(vec.at(*current_machine).inputWaste(*Waste) == 0){
                             (*Waste).CalculateValue();
                             money = (*Waste).GetValue();
                         
@@ -233,7 +235,7 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
                 }
             }
             else{
-                Waste= new Organic();
+                Waste= new Organic(vec.at(*current_machine).Waste);
                 cout << "Enter weight of waste: ";
                 cin >> weight;
                 cout << "Choose the attributes of your waste: (Fresh or Rotten) ";
@@ -244,7 +246,7 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
 
                 cout << "Completed Successfully" << endl;
                 
-                if(vc.at(*current_machine).inputWaste(*Waste) == 1){
+                if(vc.at(*current_machine).inputWaste(*Waste) == 0){
                             (*Waste).CalculateValue();
                             money = (*Waste).GetValue();
                         
@@ -264,7 +266,14 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
     
         case 2:
         {
-            int status;
+            if (type == 1)
+            {
+                vc.at(*current_machine).withdrawMoney(user);
+            }
+            else
+            {
+                vec.at(*current_machine).withdrawMoney(user);
+            }
             break;
         }
 
@@ -275,6 +284,8 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
             break;
     
     }
+    }
+
 }
 
 
@@ -296,7 +307,7 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
         cout << "Password: ";
         cin >> pass;
         if(admin.loginAdmin(name,pass) == 1){
-            
+
             //!makine burdan tekrar user menu kısmına dönmüyor çünkü admin menü açmanın bilgisi sızdırılmış (admine mesaj gidiyormuş gibi düşebiliriz)
         }
         else{
@@ -310,7 +321,7 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
         cout << "[2] Create a Vending Machine" << endl;
         cout << "[3] Check Current Balance" << endl;
         cout << "[4] Set This Vending Machine" << endl;
-        cout << "[5] Publish Machine" << endl;//! publish???
+        cout << "[5] Publish Machine" << endl;
         cout << "[6] Turn Off" << endl;//!kapatmıyo
         cout << "Enter Choice : ";
         cin >> selection;
@@ -341,26 +352,46 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
     
             break;
     
-        case 3://!sadece düz vending machine parasını kontrol ediyo
+        case 3:
             cout << "[1] View Current Balance" << endl;
             cout << "[2] Deposit Money" << endl;
     
             cout << "Enter Choice : ";
             cin >> selection;
 
-            if (selection == 1)
+            if (type == 1)
             {
-                cout << "Vending Machine Balance: " << MAC.at(*current_machine).getMoney() << endl;
+               if (selection == 1)
+              {
+                 cout << "Vending Machine Balance: " << vc.at(*current_machine).getMoney() << endl;
+              }
+               else if (selection == 2)
+               {
+                 cout << "How Much Change to Vending Machine Balance: ";
+                 cin >> money;
+    
+                 vc.at(*current_machine).setMoney(money);
+    
+                 cout << "New Vending Machine Balance: " << vc.at(*current_machine).getMoney() << endl;
+               }
             }
-            else if (selection == 2)
+            else
             {
-                cout << "How Much Change to Vending Machine Balance: ";
-                cin >> money;
+               if (selection == 1)
+              {
+                 cout << "Vending Machine Balance: " << MAC.at(*current_machine).getMoney() << endl;
+              }
+               else if (selection == 2)
+               {
+                 cout << "How Much Change to Vending Machine Balance: ";
+                 cin >> money;
     
-                MAC.at(*current_machine).setMoney(money);
+                 MAC.at(*current_machine).setMoney(money);
     
-                cout << "New Vending Machine Balance: " << MAC.at(*current_machine).getMoney() << endl;
+                 cout << "New Vending Machine Balance: " << MAC.at(*current_machine).getMoney() << endl;
+               }
             }
+
 
     
             break;
@@ -374,7 +405,7 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
 
             if (temp > MAC.size())
             {
-                *current_Omachine = -1;
+                *current_machine = -1;
                 type = 1;
                 *current_Omachine = temp;
                 *current_Omachine = *current_Omachine - MAC.size()-1;
@@ -382,7 +413,7 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
 
             else
             {
-                *current_machine = -1;
+                *current_Omachine = -1;
                 type = 2;
                 *current_machine = temp;
                 *current_machine = *current_machine -1;
