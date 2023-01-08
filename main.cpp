@@ -63,7 +63,9 @@ int logIn(vector<User> &users)
         }
         
         User user(username,password);
+        user.saveInfo(user);
         users.push_back(user);
+
 
         return -1;
     }
@@ -86,12 +88,15 @@ int logIn(vector<User> &users)
             // User user(username,password);
             // n = user.loginAccount(username, password);
 
-            for(int i{0}; i< 10 ; i++){
+            for(int i{0}; i< users.size() ; i++){
                     if(users[i].getName() == username && users[i].getPassword() == password){
                         index = i;
                         break;
                     }
-                    index=-1;
+                    if(i == users.size()-1){
+                        index = -1;
+                        break;
+                    }
                 }
 
             if (index >= 0)
