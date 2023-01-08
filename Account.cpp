@@ -77,46 +77,15 @@ int User :: getWallet() {return this->wallet;}
 
 string User :: getPassword() {return this->password;}
 
-void User :: saveInfo(User &user){
-    string temp, arr[10];
-    file.open("UserDatabase.txt",ios::in);
-    
-    getline(file, temp);
-    file.close();
-    
-    if(temp == " "){
+void User :: saveInfo(vector<User> &users){
         file.open("UserDatabase.txt",ios::out);
-        // for(int i{0} ; i<10 ; i++){
-        //     if(arr[i] != " "){
-        //         file << arr[i];
-        //     }
-        // }
-        file << user.getName() << setw(10) << user.getPassword() << setw(10) << user.getWallet() << "\n"  << endl;
-        file.close();
-    }
-    else{
-        file.open("UserDatabase.txt",ios::in);
-        for(int i{0} ; i<10 ; i++){
-            getline(file, temp);
-            if(temp == " "){
-                break;
-            }
-            arr[i] =temp;
-        }
-        file.close();
-        file.open("UserDatabase.txt",ios::out);
-        for(int i{0} ; i<10 ; i++){
-            if(arr[i] != ""){
-                file << arr[i] << "\n";
-            }
-        }
-        file << user.getName() << setw(10) << user.getPassword() << setw(10) << user.getWallet() << "\n" << endl;
-        file.close();
-    }
-    
-    // file << user.getName() << setw(10) << user.getPassword() << setw(10) << user.getWallet() << endl;
 
-    // file.close();
+        for(int i = 0 ; i < users.size() ; i++){
+            file << users[i].getName() << setw(10) << users[i].getPassword() << setw(10) << users[i].getWallet() << "\n"  << endl;
+        }
+        
+        file.close();
+   
 }
 
 void Admin :: getInfo(){

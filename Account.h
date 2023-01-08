@@ -46,7 +46,7 @@ public:
     virtual void setWallet(int wallet);
     virtual int getWallet();
     virtual string getPassword();
-    virtual void saveInfo(User &a);
+    virtual void saveInfo(vector<User> &users);
 };
 
 class Admin : public Account

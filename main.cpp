@@ -63,7 +63,6 @@ int logIn(vector<User> &users)
         }
         
         User user(username,password);
-        user.saveInfo(user);
         users.push_back(user);
 
 
@@ -288,7 +287,6 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
 
         case 3:
             cout << "===== Goodbye " << user.getName() << " =====\n" << endl;
-            user.saveInfo(user);
             return;
     
     }
@@ -322,7 +320,6 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
             continue;
         }
 
-
         cout << "\n===== Welcome " << admin.getName() << " =====\n" << endl;
         do{
         cout << "[1] Get Info" << endl;
@@ -337,6 +334,7 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
         switch (selection)
         {
         case 1:
+            users.at(0).saveInfo(users);
             admin.getInfo();
             break;
     
