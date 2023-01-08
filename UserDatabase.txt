@@ -1,4 +1,4 @@
-eren       123         0
+eren       123       300
 
-ahmet       123         0
+doruk       123      4000
 

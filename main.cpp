@@ -167,7 +167,7 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
                             money = (*Waste).GetValue();
                         
                             user.setWallet(money);
-                            cout << "\nYou succesfully added waste to machine. Your balance updated!"<< endl;
+                            cout << "\nYou succesfully added waste to machine. Your balance updated!\n"<< endl;
                         }
                         else{
                             cout << "\nMachine has not enough place to store waste!"<< endl;
@@ -195,7 +195,7 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
                             money = (*Waste).GetValue();
                         
                             user.setWallet(money);
-                            cout << "\nYou succesfully added waste to machine. Your balance updated!"<< endl;
+                            cout << "\nYou succesfully added waste to machine. Your balance updated!\n"<< endl;
                         }
                         else{
                             cout << "\nMachine has not enough place to store waste!"<< endl;
@@ -224,7 +224,7 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
                             money = (*Waste).GetValue();
                         
                             user.setWallet(money);
-                            cout << "\nYou succesfully added waste to machine. Your balance updated!"<< endl;
+                            cout << "\nYou succesfully added waste to machine. Your balance updated!\n"<< endl;
                         }
                         else{
                             cout << "\nMachine has not enough place to store waste!"<< endl;
@@ -248,7 +248,7 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
                 cin >> attrib;
 
                 (*Waste).SetAttributes(attrib);
-                (*Waste).SetAmount(amount);
+                (*Waste).SetWeight(weight);
 
                 cout << "Completed Successfully" << endl;
                 
@@ -258,7 +258,7 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
                         
                             user.setWallet(money);
                             
-                            cout << "\nYou succesfully added waste to machine. Your balance updated!";
+                            cout << "\nYou succesfully added waste to machine. Your balance updated!\n";
                         }
                         else{
                             cout << "\nMachine has not enough place to store waste!";
@@ -274,13 +274,23 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
         {
             if (type == 1)
             {
-                vc.at(*current_machine).withdrawMoney(user);
-                cout << "Don't forget your money!!" << endl;
+                if(vc.at(*current_machine).withdrawMoney(user) == 0){
+                    cout << "Don't forget your money!!!" << endl;
+                }
+                else{
+                    cout << "The vending machine doesn't have enough money!!! " << endl;
+                }
+                
             }
             else
             {
-                vec.at(*current_machine).withdrawMoney(user);
-                cout << "Don't forget your money!!" << endl;
+                if(vec.at(*current_machine).withdrawMoney(user) == 0){
+                    cout << "Don't forget your money!!" << endl;
+                }
+                else{
+                    cout << "The vending machine doesn't have enough money!!! " << endl;
+                }
+                
             }
             break;
         }
@@ -369,7 +379,7 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
             {
                if (selection == 1)
               {
-                 cout << "Vending Machine Balance: " << vc.at(*current_machine).getMoney() << endl;
+                 cout << "Vending Machine Balance: " << vc.at(*current_Omachine).getMoney() << endl;
               }
                else if (selection == 2)
                {
@@ -378,7 +388,7 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
     
                  vc.at(*current_machine).setMoney(money);
     
-                 cout << "New Vending Machine Balance: " << vc.at(*current_machine).getMoney() << endl;
+                 cout << "New Vending Machine Balance: " << vc.at(*current_Omachine).getMoney() << endl;
                }
             }
             else

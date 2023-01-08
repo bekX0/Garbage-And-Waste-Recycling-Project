@@ -89,6 +89,3 @@ int VendingMachine :: withdrawMoney(User &user){
         return 0;
     }
 }
-
-
-
