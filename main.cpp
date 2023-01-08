@@ -33,7 +33,7 @@ int main()
 int logIn(vector<User> &users)
 {
     string choose, password, againPassword, username;
-    int n = -3, index ;
+    int n = -3, index = -1;
 
     cout << "Register or Login: ";
     cin >> choose;
@@ -69,7 +69,7 @@ int logIn(vector<User> &users)
     }
     else if (choose == "Login")
     {
-        while (n != 1)
+        while (true)
         {
             cout << "Enter your name: ";
             cin >> username;
@@ -77,40 +77,42 @@ int logIn(vector<User> &users)
             cout << "Enter your password: ";
             cin >> password;
 
-            if (username == "000" && password == "000")
-            {
-                return (-2);
-                break;
-            }
+           if (username == "000" && password == "000")
+           {
+               return (-2);
+               break;
+           }
+
+            // User user(username,password);
+            // n = user.loginAccount(username, password);
 
             for(int i{0}; i< 10 ; i++){
-                if(users[i].getName() == username && users[i].getPassword() == password){
-                    index = i;
-                    break;
+                    if(users[i].getName() == username && users[i].getPassword() == password){
+                        index = i;
+                        break;
+                    }
+                    index=-1;
                 }
-            }
 
-            n = users[index].loginAccount(username, password);
-
-            if (n == 1)
+            if (index >= 0)
             {
                 cout << "Login successful." << endl;
+                
                 return index;
             }
-            else if (n == -1)
+            else if (index == -1)
             {
-                cout << "Invalid password try again !!!" << endl;
+                cout << "Invalid password or username try again !!!" << endl;
             }
-            else if (n == -2)
-            {
-                cout << "Invalid username try again !!!" << endl;
-            }
-            else
-            {
-                cout << "Invalid password and username try again !!!" << endl;
-            }
+            // else if (n == -2)
+            // {
+            //     cout << "Invalid username try again !!!" << endl;
+            // }
+            // else
+            // {
+            //     cout << "Invalid password and username try again !!!" << endl;
+            // }
         }
-        return 0;
     }
 
 }
@@ -425,14 +427,13 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
         case 5:
             while(true){
                 logged = logIn(users);
-                cout << logged << endl;
                 if(logged == -2){
                     break;
                 }
 
                 else if (logged == -1)
                 {
-                    logged = logIn(users);
+                    continue;
                 }
 
                 else{
