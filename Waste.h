@@ -12,7 +12,7 @@ class Waste
 		float price;
 		float weight;
 		int amount;
-		int value;
+		float value;
         string attributes;
 
 	public:
@@ -39,7 +39,7 @@ class Waste
 class Paper: public Waste
 {
 	private:
-		//int amount;
+		
 	
 	public:
 		
@@ -59,7 +59,7 @@ class Paper: public Waste
 class Glass: public Waste
 {
 	private:
-		//int amount;
+		
 		
 	public:
 		
@@ -78,7 +78,7 @@ class Glass: public Waste
 class Plastic: public Waste
 {
 	private:
-		//int amount;
+		
 		
 	public:
 		

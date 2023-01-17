@@ -31,7 +31,7 @@ public:
 class User : public Account
 {
 private:
-    int wallet;
+    float wallet;
 
 public:
     // Constructor
@@ -43,8 +43,8 @@ public:
 
 
     // Getters -- Setters
-    virtual void setWallet(int wallet);
-    virtual int getWallet();
+    virtual void setWallet(float wallet);
+    virtual float getWallet();
     virtual string getPassword();
     virtual void saveInfo(vector<User> &users);
 };

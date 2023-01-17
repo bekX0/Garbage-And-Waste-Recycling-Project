@@ -12,9 +12,7 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
 int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &vc, vector<VendingMachine> &MAC, int* current_machine, int* current_Omachine);
 void citiesOfMachines(vector<OrganicVendingMachine> &vc, vector<VendingMachine> &macs);
 void VendingMachineMaker(vector<OrganicVendingMachine> &vc, vector<VendingMachine> &mac, int wastetype);
-//TODO login try cath 
-//TODO withdraw belki belirli miktarda çekebilir
-//TODO debug
+
 int main()
 {
     int currentMAC {-1}, currentOMAC{-1}, currentUser{0};
@@ -84,8 +82,7 @@ int logIn(vector<User> &users)
                break;
            }
 
-            // User user(username,password);
-            // n = user.loginAccount(username, password);
+            
 
             for(int i{0}; i< users.size() ; i++){
                     if(users[i].getName() == username && users[i].getPassword() == password){
@@ -108,14 +105,7 @@ int logIn(vector<User> &users)
             {
                 cout << "Invalid password or username try again !!!" << endl;
             }
-            // else if (n == -2)
-            // {
-            //     cout << "Invalid username try again !!!" << endl;
-            // }
-            // else
-            // {
-            //     cout << "Invalid password and username try again !!!" << endl;
-            // }
+            
         }
     }
 
@@ -305,7 +295,7 @@ void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
 }
 
 
-//TODO Log out func
+
 
 
 int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &vc, vector<VendingMachine> &MAC, int* current_machine, int* current_Omachine)
@@ -337,7 +327,7 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
         cout << "[3] Check Current Balance" << endl;
         cout << "[4] Set This Vending Machine" << endl;
         cout << "[5] Publish Machine" << endl;
-        cout << "[6] Turn Off" << endl;//!kapatmıyo
+        cout << "[6] Turn Off" << endl;
         cout << "Enter Choice : ";
         cin >> selection;
     

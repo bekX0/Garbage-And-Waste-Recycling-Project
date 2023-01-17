@@ -69,11 +69,11 @@ void Account::setPassword(string password){
 
 
 // wallet just for user  
-void User::setWallet(int wallet) {
+void User::setWallet(float wallet) {
     this->wallet += wallet;
 }
 
-int User :: getWallet() {return this->wallet;}
+float User :: getWallet() {return this->wallet;}
 
 string User :: getPassword() {return this->password;}
 

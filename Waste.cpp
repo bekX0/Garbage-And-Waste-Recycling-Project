@@ -31,7 +31,7 @@ float Waste :: GetValue ()
 }
 		
 void Waste :: SetPrice (float x){
-	price = x;  //TODO file yapilacak
+	price = x;  
 }
 		
 void Waste :: SetAttributes (string att){
@@ -255,7 +255,7 @@ float Organic :: GetValue ()
 	return (value);
 }
 
-//düzenleme -berkin
+
 
 void Waste :: SetAmount(int z) {this->amount=z;}
 float Waste :: GetWeight() {return this->weight;}

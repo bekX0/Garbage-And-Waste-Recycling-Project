@@ -18,8 +18,7 @@ class VendingMachine {
         int storage; // Represents the amount of materials in machine
         int storage_limit; // Represents the limit of materials that can be stored in machine
         string city;
-        //? pointer user olsa paralari burdan versek (inputWaste()) 
-        // Account *user;
+        
 
         
 
@@ -71,7 +70,7 @@ class OrganicVendingMachine : public VendingMachine{
         OrganicVendingMachine(float m, float sl, string city);
         ~OrganicVendingMachine();
         int inputWaste(Waste &W);
-    //TODO devami yazilacak
+    
 
 };
 
