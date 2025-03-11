@@ -64,15 +64,23 @@ int VendingMachine :: inputWaste(Waste &W){
     else if(this->storage + W.GetAmount() > this->storage_limit){
         return -1;
     }
+    else
+    {
+        return -1;
+    }
 } 
 
 //================= ORGANIC MACHINE
 
 int OrganicVendingMachine :: inputWaste(Waste &W){
-   if(this->storage + W.GetWeight() < this->storage_limit){
+    if(this->storage + W.GetWeight() < this->storage_limit){
         return 0;
     } 
     else if(this->storage + W.GetWeight() > this->storage_limit){
+        return -1;
+    }
+    else
+    {
         return -1;
     }
 }
@@ -87,5 +95,9 @@ int VendingMachine :: withdrawMoney(User &user){
         this->money -= user.getWallet();
         user.setWallet(-(user.getWallet()));
         return 0;
+    }
+    else
+    {
+        return -1;
     }
 }

@@ -17,7 +17,7 @@ void VendingMachineMaker(vector<OrganicVendingMachine> &vc, vector<VendingMachin
 //TODO debug
 int main()
 {
-    int currentMAC {-1}, currentOMAC{-1}, currentUser{0};
+    int currentMAC {-1}, currentOMAC{-1};
 
     Admin A("admin", "root");
     vector <User> users;
@@ -33,7 +33,7 @@ int main()
 int logIn(vector<User> &users)
 {
     string choose, password, againPassword, username;
-    int n = -3, index = -1;
+    int index = -1;
 
     cout << "Register or Login: ";
     cin >> choose;
@@ -87,16 +87,16 @@ int logIn(vector<User> &users)
             // User user(username,password);
             // n = user.loginAccount(username, password);
 
-            for(int i{0}; i< users.size() ; i++){
-                    if(users[i].getName() == username && users[i].getPassword() == password){
-                        index = i;
-                        break;
-                    }
-                    if(i == users.size()-1){
-                        index = -1;
-                        break;
-                    }
+            for(int i{0}; i< (int)users.size() ; i++){
+                if(users[i].getName() == username && users[i].getPassword() == password){
+                    index = i;
+                    break;
                 }
+                if(i == (int)users.size()-1){
+                    index = -1;
+                    break;
+                }
+            }
 
             if (index >= 0)
             {
@@ -107,6 +107,7 @@ int logIn(vector<User> &users)
             else if (index == -1)
             {
                 cout << "Invalid password or username try again !!!" << endl;
+                return -1;
             }
             // else if (n == -2)
             // {
@@ -118,12 +119,16 @@ int logIn(vector<User> &users)
             // }
         }
     }
+    else
+    {
+        return -1;
+    }
 
 }
 
 void menu(User &user, vector<OrganicVendingMachine> &vc, vector<VendingMachine> &vec,  int* current_machine, int type)
 {
-    int selection, choice, amount, counter;
+    int selection, choice, amount;
     string attrib;
     float weight, money;
     Waste *Waste{nullptr};
@@ -313,7 +318,6 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
     
     int selection,accepted, logged;
     int type, temp;
-    char choose;
     float money;
     string cityname, name, pass;
     do{
@@ -344,8 +348,15 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
         switch (selection)
         {
         case 1:
-            users.at(0).saveInfo(users);
-            admin.getInfo();
+            if(users.size() != 0)
+            {
+                users.at(0).saveInfo(users);
+                admin.getInfo();
+            }
+            else
+            {
+                cout << "There is no user info." << endl;
+            }
             break;
     
         case 2:
@@ -419,7 +430,7 @@ int adminMenu(vector<User> &users, Admin &admin, vector<OrganicVendingMachine> &
             cout << endl << "Select number of city: ";
             cin >> temp;
 
-            if (temp > MAC.size())
+            if (temp > (int)MAC.size())
             {
                 *current_machine = -1;
                 type = 1;
@@ -527,13 +538,13 @@ void citiesOfMachines(vector<OrganicVendingMachine> &vc, vector<VendingMachine> 
     int i{0};
     cout << "Anorganic Machines:" << endl;
 
-    for(; i< macs.size() ; i++){
+    for(; i< (int)macs.size() ; i++){
         cout << "[" <<  i+1 << "] " << macs.at(i).getCity() << endl;
     }
 
     cout << "Organic Machines:" << endl;
 
-    for(; i< vc.size()+macs.size() ; i++){
+    for(; i< (int)vc.size()+(int)macs.size() ; i++){
         cout << "[" <<  i+1 << "] " << vc.at(i-macs.size()).getCity() << endl;
     }
 }

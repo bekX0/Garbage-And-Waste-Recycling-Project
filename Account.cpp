@@ -80,7 +80,7 @@ string User :: getPassword() {return this->password;}
 void User :: saveInfo(vector<User> &users){
         file.open("UserDatabase.txt",ios::out);
 
-        for(int i = 0 ; i < users.size() ; i++){
+        for(int i = 0 ; i < (int)users.size() ; i++){
             file << users[i].getName() << setw(10) << users[i].getPassword() << setw(10) << users[i].getWallet() << "\n"  << endl;
         }
         
